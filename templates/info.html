@@ -1,0 +1,152 @@
+
+{% extends "layout.html" %}
+{% block title %}informacion{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+{{ super() }}
+<section id="info-parada">
+<div class="head-info">
+<div class="head-tipo"><h3>INFORMACION DE LA PARADA</h3></div>    
+<div class="head-contenido">
+<div class="head-contenido1">   
+{%for datos in informacion %}
+<ul>
+<li><label for="parada">Parada:</label>
+<input type="text" value="{{datos[1]}}" id="parada"></li>
+<li><label for="codigo">Codigo:</label>
+<input type="text" value="{{datos[0]}}" id="codigo"></li>
+<li><label for="direccion">Direccion:</label>
+<input type="text" value="{{datos[2]}}" id="direccion"></li>
+<li><label for="municipio">Municipio:</label>
+<input type="text" value="{{datos[3]}}" id="municipio"></li>
+<li><label for="provincia">Provincia:</label>
+<input type="text" value="{{datos[4]}}" id="provincia"></li>
+<li><label for="zona">Zona:</label>
+<input type="text" value="{{datos[5]}}" id="zona"></li>
+<li><label for="aporte">Aporte:</label>
+<input type="text" value="{{datos[6]}}RD$/{{datos[7]}}" id="aporte"></li>
+</ul>
+{%endfor%}
+</div>
+
+<div class="head-contenido2">
+<ul>
+<li><label for="press">Presidente:</label>
+<input type="text" value="{{cabecera[3]}}" id="press"></li>
+<li><label for="veedor">Veedor:</label>
+<input type="text" value="{{cabecera[4]}}" id="veedor"></li>
+<li><label for="miemb">Miembros:</label>
+<input type="text" value="{{cabecera[2]}}" id="miemb"></li>
+<li><label for="cuota">cuota:</label>
+<input type="text" value="{{cabecera[0]}}" id="cuota"></li>
+<li><label for="cuota">pago:</label>
+<input type="text" value="{{cabecera[1]}}" id="pago"></li>
+</ul>
+</div>
+</div>
+</div>
+</section> 
+<section id="listado">
+ <div class="info"> 
+<h1>LISTADO DE MIEMBROS</h1> 
+{%for datos in informacion %}
+{%endfor%}
+<table>
+   <tr>
+      <th>ITEM</th>
+      <th>NOMBRE_COMPLETO</th>
+      <th>CEDULA</th>
+      <th>TELEFONO</th>
+      <th>FUNCION</th>
+   </tr>
+   {% for usuario in miembros %}
+   <tr>
+      <td>{{usuario[0]}}</td>
+      <td>{{usuario[1]}}</td>
+      <td>{{usuario[2]}}</td>
+      <td>{{usuario[3]}}</td>
+      <td>{{usuario[4]}}</td>
+   </tr>
+   {%endfor%}
+</table>   
+</div>
+</section>
+<section>
+   <div class="info"> 
+  <h1>INFORMACION FINANCIERA</h1>
+  <table>
+     <tr>
+     <tr>
+        <th>ITEM</th>
+        <th>TIPO_DE_INFORMACION</th>
+        <th>CANTIDAD</th>
+        <th>MONEDA</th>
+     </tr>
+     <tr>
+        <tD>1</tD>
+        <td>BALANCE BANCARIO:</td>
+        <td>{{diario[7]}}</td>
+        <td>RD$</td>
+     </tr>
+     <tr>
+        <tD>2</tD>
+        <td>BALANCE A LA FECHA:</td>
+        <td>{{diario[0]}}</td>
+        <td>RD$</td>
+     </tr>
+     <tr>
+        <tD>3</tD>
+        <td>TOTAL DE PRESTAMOS :</td>
+        <td>{{diario[1]}}</td>
+        <td>RD$</td>
+     </tr>
+     <tr>
+        <tD>4</tD>
+        <td>TOTAL DE INGRESOS :</td>
+        <td>{{diario[2]}}</td>
+        <td>RD$</td>
+     </tr>
+     <tr>
+        <tD>5</tD>
+        <td>TOTAL DE GASTOS :</td>
+        <td>{{diario[3]}}</td>
+        <td>RD$</td>
+     </tr>
+     <tr>
+        <tD>6</tD>
+        <td>TOTAL DE APORTES :</td>
+        <td> {{diario[4]}}</td>
+        <td>RD$</td>
+     </tr>
+     <tr>
+        <tD>7</tD>
+        <td>AORTES PENDIENTES:</td>
+        <td>{{diario[5]}}</td>
+        <td>RD$</td>
+     </tr>
+     <tr>
+        <tD>8</tD>
+        <td> ABONO A PRESTAMOS:</td>
+        <td>{{diario[6]}}</td>
+        <td>RD$</td>
+     </tr>
+     </tr>
+  </table>
+  </div>
+  </section>
+  <section id="banco">
+    <div class="info">
+      <h1>CUENTA DE BANCO</h1>
+    </div>
+  </section>
+
+
+
+
+<footer>
+  <a href="{{ url_for('logout') }}" class="btn"><button>Salir</button></a><br>  
+  &copy; Copyright 2024 by <a href="http://www.cessrl.blogspot.com">La Administradora</a>.
+</footer> 
+{% endblock %}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
+ <link rel="stylesheet" href="/static/css/login-estilo.css">
+</head>  
+<body>
+  <div class="center">   
+  <div class="formulario">
+  <h1>ADMINISTRADORA</h1>  
+  <form  method='POST' action="/new_data">   
+         <div class="input-contenedor">  
+            <select name="parada" >
+            {%for parada in n_paradas%}
+            <option value = {{parada}} >{{parada}}</option>
+            {%endfor%}
+            </select>
+         </div>
+         <div class="input-contenedor">
+         <input type="text" name="cedula" placeholder="Cedula">       
+         </div>
+
+         <div class="input-contenedor">
+             <input type="password" name="clave" placeholder="Contraseña">    
+        </div>
+         <input type="submit" value="Login" class="button">
+        </form>
+        <div class="input-contenedor">
+         <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
+         <p>¿No tienes una cuenta? <a class="link" href="registrarvista.html">Registrate </a></p>
+    </div> 
+  </div>
+</div>    
+<footer>
+{% block footer %}
+    &copy; Copyright 2024 by <a href="http://www.cessrl.blogspot.com">La Administradora</a>.
+{% endblock %}    
+</footer> 
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>administracion</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
+    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet">    
+</head>
+<body>
+    <div class="center">
+		<div align="center" class="border">
+			<div class="header">
+				<h1 class="word">Presidente</h1>
+                </div>
+			    <h2 class="word">
+				<form action="{{url_for('login_a')}}" method="post">
+				    <div class="msg">{{msg}}</div>
+                    <input id="parada" name="parada" type="text" value="{{parada}}" class="textbox"/></br></br>
+					<input id="username" name="username" type="text" placeholder="Nombre del presidente" class="textbox"/></br></br>
+					<input id="password" name="password" type="password" placeholder="Entre su Password" class="textbox"/></br></br></br>
+					<input type="submit" class="btn" value="Sign In">
+				</form>
+		</div>
+    </div>
+</body>
+</html>

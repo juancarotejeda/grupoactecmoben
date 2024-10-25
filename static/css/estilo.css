@@ -1,0 +1,188 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    width: 95%;
+    max-height: 900px;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+    background: url(/static/images/banner.png);
+    background-size:100%;
+    background-attachment:fixed;
+
+}
+
+
+.info{
+    max-height: max-content;
+    margin: 20px 0px;
+    text-align: center;
+    padding-left: 0px;
+    padding-bottom:10px ;
+}
+
+.head-info{
+    display: block;
+    max-height: max-content;
+    margin: 20px 0px;
+    text-align: center;
+    justify-content: center;
+    padding-left: 0px;
+    padding-bottom:10px ;
+    
+}
+.head-tipo{
+    border: 2px solid #000000 ;
+}
+
+.head-contenido{
+    display: flex; 
+}
+
+.head-contenido1{
+    list-style: none; 
+    margin-right: auto; 
+}
+
+.head-contenido1 label{
+    font-weight: 700;
+}
+
+.head-contenido2 label{
+    font-weight: 700;
+}
+
+.head-contenido ul{
+    list-style: none;
+}
+
+
+.head-contenido2{
+    justify-content: end;
+    padding-right: 20px;   
+}
+
+
+.headers{
+background-color: aqua;    
+height: 85px;
+padding: 5px 10%;
+border-radius: 10PX;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.headers .logo img{
+  height: 85px;
+  width:auto;
+  transition: all 0.3s;
+}  
+
+.headers .logo{
+ cursor: pointer;
+}
+
+.headers .logo img:hover{
+   transform: scale(1.2);
+   }
+
+.headers .menu {
+    list-style: none;
+    cursor: pointer;
+}   
+
+.headers .menu li{
+ display: inline-block;
+ transform: all 0.3s ease 0s; 
+ padding: 0px 5px;         
+}   
+
+.headers .menu a{
+ font-size: 700; 
+ text-decoration: none; 
+ color: black;           
+} 
+
+.headers .btn button{
+    font-weight: 700;
+    color: #ff1b02;
+    padding: 9px 25px;
+    background-color: #000000;
+    border: none;
+    border-radius: 50px;
+    transform: all 0.3s ease 0s;
+    cursor: pointer;
+}
+
+.headers .btn button:hover{
+    transform: scale(1.1);
+    background-color: #000000;
+    color: gold;
+}
+
+table{
+  margin: 0px 0px;  
+  width:auto;
+display: flex;
+}
+
+
+th, td {
+    width:max-content;
+    border:1px solid  rgb(13, 0, 249);
+    color: #000000;
+  }
+
+select{
+    border: 0; 
+    background: transparent;    
+}
+
+input{
+    border: 0; 
+    background: transparent; 
+   }
+
+
+button{
+margin-top: 5px;    
+width: 20vw; 
+font-size: medium;
+height: max-content;
+background: #0217ff;   
+}
+
+button:hover{
+    background: #ff1b02;
+    color: #fff;
+} 
+
+.campo_item{
+    width: 40px;
+}
+
+.campo_nombre{
+    width: 200px;
+}
+
+.campo_cedula{
+    width: 60px;
+}
+
+.campo_id{
+    width: 90px;
+}
+
+.word{
+    color: #FFFFFF;
+    font-style: oblique;
+    font-weight: bold;
+}
+

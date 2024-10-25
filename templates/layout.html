@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% block head %}
+<title>micro_estacion</title> 
+<head>  
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
+<link href="{{url_for('static',filename='css/estilo.css')}}" rel="stylesheet"> 
+</head>
+{% endblock %}   
+{% block content %} 
+<body>  
+<header class="headers">  
+ <div class="logo">
+   <img src="/static/images/logo_motoben.png" alt="logo de la Adm.">
+</div> 
+<nav >
+ <ul class="menu">
+    <li><a href="{{url_for('new_data')}}">GENERAL</a></li>
+    <li><a href="{{url_for('aportes')}}">APORTES</a></li>
+    <li><a href="{{url_for('administrar')}}">DIRECCION</a></li>
+ </ul>   
+</nav>
+<a href="#" class="btn"><button>Contactar</button></a>
+</header> 
+</body>
+{% endblock %}
+</html>

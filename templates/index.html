@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "layout.html" %}
+{% block title %}administracion{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+{{ super() }}
+
+<section id="n_parada">
+<div class="adm-info">
+    
+    <div class="adm-body">
+    <div class="adm-header">CREAR NUEVA PARADA</div>    
+    <div class="entrar">    
+    <form  method='POST'action="{{ url_for('nueva_p') }}"> 
+            <label for="parada_n">PARADA</label>
+            <input type="text" name="parada_n" id="parada_n">                 
+            <label for="dir">DIRECCION</label>
+            <input type="text" name="dir" id="dir">           
+            <label for="sector">SECTOR</label>
+            <input type="text" name="sector" id="sector">       
+            <label for="provincia">PROVINCIA</label>
+            <input type="text" name="provincia" id="provincia">    
+            <label for="region">REGION</label>
+            <input type="text" name="region" id="region">       
+            <label for="aporte">APORTE</label>
+            <input type="text" name="aporte" id="aporte" >    
+            <div class="enviar">
+                <input type="submit" value="Enviar" class="adm-button">
+                <br>
+                <a href="{{ url_for('logout') }}" class="btn">Salir</a>
+            </div>
+        </form>
+        </div>
+        </div>  
+        </div>            
+</section>
+
+<section id="n_asociado">
+<div class="adm-info">
+    <div class="adm-header"><h1>AGREGAR NUEVO ASOCIADO</h1></div>
+    <h2><a href="{{ url_for('logout') }}" class="btn">Salir</a></h2>  
+</div>
+</section>
+<section id="editar_pa">
+    <div class="adm-info">
+        <div class="adm-header"><h1>EDITAR PARADA</h1></div>
+        <form  method='POST'action="{{ url_for('editar_p') }}"> 
+        
+            <div class="adm-contenedor">
+                <input type="text" name="parada_n" placeholder="Parada">       
+            </div>
+             
+            <div class="adm-contenedor">
+                <i class="fas fa-key icon"></i>
+                <input type="password" name="dir" placeholder="Direccion">    
+            </div>
+        
+            <div class="adm-contenedor">
+               <i class="fas fa-key icon"></i>
+                <input type="text" name="sector" placeholder="Sector">       
+            </div>
+        
+            <div class="adm-contenedor">
+                <i class="fas fa-key icon"></i>
+                <input type="password" name="provincia" placeholder="Provincia">    
+            </div>
+            
+        <div class="adm-contenedor">
+            <i class="fas fa-key icon"></i>
+            <input type="text" name="region" placeholder="Region">       
+        </div>
+         
+        <div class="adm-contenedor">
+            <i class="fas fa-key icon"></i>
+            <input type="password" name="aporte" placeholder="Aporte">    
+        </div>
+        <input type="submit" value="Login" class="button">
+    </form>
+    <h2><a href="{{ url_for('logout') }}" class="btn">Salir</a></h2> 
+    </div>
+</section>
+
+<section id="editar_as">
+    <div class="adm-info">
+        <div class="adm-header"><h1>EDITAR ASOCIADOS</h1></div>
+        <h2><a href="{{ url_for('logout') }}" class="btn">Salir</a></h2>  
+    </div>
+</section>
+<section id="suspender_pa">
+    <div class="adm-info">
+        <div class="adm-header"><h1>SUSPENDER PARADA</h1></div>
+        <h2><a href="{{ url_for('logout') }}" class="btn">Salir</a></h2>  
+    </div>
+</section>
+<section id="suspender_as">
+    <div class="adm-info">
+        <div class="adm-header"><h1>SUSPENDER ASOCIADOS</h1></div>
+        <h2><a href="{{ url_for('logout') }}" class="btn">Salir</a></h2>   
+    </div>
+</section>
+<footer>
+    <a href="{{ url_for('logout') }}" class="btn">Salir</a><br>		
+    &copy; Copyright 2024 by <a href="http://www.cessrl.blogspot.com">La Administradora</a>
+  </footer> 
+{% endblock %}
+  </html>
