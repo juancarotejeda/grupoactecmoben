@@ -6,6 +6,9 @@
         "src": "/(.*)",
         "dest": "app.py"
       }
-    ]
+    ],
+    "env": {
+      "FLASK_ENV": "production"
+    }
 
   }
