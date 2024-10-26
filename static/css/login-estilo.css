@@ -211,3 +211,8 @@ p{
     color: coral;
     text-align: center;
 }
+
+.msg{
+color: rgb(255, 87, 20);
+font-size: 20px;
+}

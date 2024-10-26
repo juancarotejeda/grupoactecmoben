@@ -1,4 +1,12 @@
 
+def check_parada(cur,parada):
+    cur.execute(f"SELECT balance_banco FROM tabla_index WHERE nombre = '{parada}' ")
+    check=cur.fetchall()
+    for valor in check:
+        if valor[0] > 1000.00:
+            return True
+        else: 
+            return False
     
 def listado_paradas(cur):
     cur.execute("SELECT nombre FROM tabla_index")  

@@ -10,7 +10,14 @@
 <body>
   <div class="center">   
   <div class="formulario">
-  <h1>ADMINISTRADORA</h1>  
+  <h1>ADMINISTRADORA</h1> 
+  {% with messages = get_flashed_messages()%}
+  {% if messages%}
+    {% for message in messages%}
+    <div class="msg">{{message}}</div>
+    {%endfor%}
+    {%endif%}
+    {%endwith%} 
   <form  method='POST' action="/new_data">   
          <div class="input-contenedor">  
             <select name="parada" >
@@ -29,8 +36,7 @@
          <input type="submit" value="Login" class="button">
         </form>
         <div class="input-contenedor">
-         <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
-         <p>¿No tienes una cuenta? <a class="link" href="registrarvista.html">Registrate </a></p>
+
     </div> 
   </div>
 </div>    

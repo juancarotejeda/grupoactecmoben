@@ -1,7 +1,7 @@
 
 
 import mysql.connector,funciones,os
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template,flash, request, session, redirect, url_for
 from datetime import datetime
 from dotenv import load_dotenv
 load_dotenv()
@@ -24,10 +24,10 @@ connection =mysql.connector.connect(
 
 )
 
-
-
 @app.route("/")
-def login():   
+def login():  
+    msg = '' 
+    flash(msg) 
     cur = connection.cursor() 
     resultado=funciones.listado_paradas(cur)
     paradas=[]
@@ -38,13 +38,22 @@ def login():
 
 @app.route("/new_data", methods=["POST"])
 def new_data(): 
+    msg = ''
     global parada,cedula,password 
     parada = request.form['parada']
     cedula = request.form['cedula']
     password = request.form['clave']
+    
     cur = connection.cursor()
+    
+    estacion=funciones.check_parada(cur,parada)
+    if estacion == False:
+        msg = 'Esta parada esta bloqueada!' 
+        flash(msg)          
+        return redirect(url_for('login'))
+    
     cur.execute(f"SELECT cedula FROM {parada} WHERE cedula = '{cedula}' ")
-    result = cur.fetchone()
+    result = cur.fetchall()
     if result != []:   
       cur.execute(f"SELECT password FROM tabla_index  WHERE nombre ='{parada}'" )
       ident=cur.fetchall() 
@@ -57,7 +66,15 @@ def new_data():
             diario=funciones.diario_general(cur,parada)
             cur.close()
             return render_template('info.html',informacion=informacion,cabecera=cabecera,fecha=fecha,miembros=miembros,diario=diario) 
-
+        else:
+            msg = 'Incorrecta contraseña de la parada!' 
+            flash(msg)          
+            return redirect(url_for('login'))
+    else:
+      msg = 'cedula Incorrecta para esta parada!'
+      flash(msg)           
+      return redirect(url_for('login'))    
+        
 @app.route('/aportes') 
 def aportes():
     return render_template('login_a.html',parada=parada)
