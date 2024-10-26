@@ -23,15 +23,17 @@ connection =mysql.connector.connect(
     autocommit=True,
 
 )
-global cur
-cur = connection.cursor()
+
+
 
 @app.route("/")
-def login():    
+def login():   
+    cur = connection.cursor() 
     resultado=funciones.listado_paradas(cur)
     paradas=[]
     for paradax in resultado:
-       paradas+=paradax                  
+       paradas+=paradax  
+    cur.close()                   
     return render_template('login.html',n_paradas=paradas)
 
 @app.route("/new_data", methods=["POST"])
@@ -40,7 +42,7 @@ def new_data():
     parada = request.form['parada']
     cedula = request.form['cedula']
     password = request.form['clave']
-    
+    cur = connection.cursor()
     cur.execute(f"SELECT cedula FROM {parada} WHERE cedula = '{cedula}' ")
     result = cur.fetchone()
     if result != []:   
@@ -53,21 +55,12 @@ def new_data():
             cabecera=funciones.info_cabecera(cur,parada)
             miembros=funciones.lista_miembros(cur,parada)
             diario=funciones.diario_general(cur,parada)
+            cur.close()
             return render_template('info.html',informacion=informacion,cabecera=cabecera,fecha=fecha,miembros=miembros,diario=diario) 
 
 @app.route('/aportes') 
 def aportes():
     return render_template('login_a.html',parada=parada)
-
-@app.route('/finanzas', methods=["GET", "POST"]) 
-def finanzas(): 
-    fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H:%M:%S")
-    diario=funciones.diario_general(parada)
-    return render_template('finanzas.html',diario=diario,fecha=fecha,parada=parada)
-
-@app.route('/direccion') 
-def direccion(): 
-    return render_template('direccion.html')
 
 @app.route('/administrar') 
 def administrar():
@@ -80,19 +73,24 @@ def login_a():
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
         username = request.form['username']
         password = request.form['password']
-        account=funciones.logge_a(parada,password)                                       
+        cur = connection.cursor()
+        cur.execute(f"SELECT * FROM tabla_index WHERE nombre ='{username}' AND password = '{password}'")                                       
+        accounts =cur.fetchall()
+        for accountx in accounts:
+          account +=accountx 
         if account:
             session['loggedin'] = True
             session['id'] = account[0]
             session['username'] = account[1]
             fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H:%M:%S")  
-            informacion=funciones.info_parada(parada) 
+            informacion=funciones.info_parada(cur,parada) 
             miembros=funciones.lista_miembros(parada)
             datos=funciones.aportacion(parada) 
             cabecera=funciones.info_cabecera(parada)
+            cur.close()
             return render_template('usuario.html',informacion=informacion,miembros=miembros,datos=datos,cabecera=cabecera,fecha=fecha)
         else:
-            msg = 'Incorrecto nombre de usuario / password !'
+            msg = 'Incorrecto nombre de usuario / password !'           
     return render_template('login_a.html', msg = msg)
 
 
@@ -103,6 +101,7 @@ def login_dir():
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
         username = request.form['username']
         password = request.form['password']
+        cur = connection.cursor()
         cur.execute(f"SELECT * FROM usuarios WHERE nombre ='{username}' AND password = '{password}'")
         accounts =cur.fetchall()
         for accountx in accounts:
@@ -112,6 +111,7 @@ def login_dir():
             session['id'] = account[0]
             session['username'] = account[1]
             fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H:%M:%S")  
+            cur.close()
             return render_template('index.html',fecha=fecha)
         else:
             msg = 'Incorrecto nombre de usuario / password !'
@@ -122,7 +122,7 @@ def logout():
 	session.pop('loggedin', None)
 	session.pop('id', None)
 	session.pop('username', None)
-	return redirect(url_for('info'))
+	return redirect(url_for('login'))
 
 @app.route('/nueva_p') 
 def nueva_p(): 
