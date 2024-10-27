@@ -6,28 +6,16 @@
 {% endblock %}
 {% block content %}
 {{ super() }}
-<section id="cuotas">
-<form action="data_cuotas" method="post">
+<section id="cuotas" class="head-info-adm">
+<div class="head-info-adm-up">
    <h1>LISTA DE PAGOS</h1>
-   <p>
-   {%for datos in informacion %}   
-   <label for="paradas">PARADA:</label>             
-   <input type="text" name="parada" value="{{datos[2]}}" id="paradas">
-   {%endfor%}
-                        
-   <label for="fecha">FECHA:</label>
-   <input type="text" name="time" value="{{fecha}}" id="fecha">
-  
-   <label for="miembro">NUMERO DE MIEMBROS:</label>
-   <input type="text" name="numero" value="{{ cabecera[1]}}" id="miembro">         
- 
-   <label for="forma">PRESIDENTE:</label>
-   <input type="text" name="forma" value="{{ cabecera[3]}}" id="forma">
- 
-   <label for="valor">CUOTA:</label>
-   <input type="text" name="valor" value="{{ cabecera[0]}}RD$/{{ cabecera[2]}}" id="valor">  
+</div>
+<div class="head-info-adm-down">
+
+</div>    
 </section>
 <section id="tabla_cuotas">
+<form action="data_cuotas" method="post">   
 <table>
    <tr></tr>
       <th>ITEM</th>

@@ -83,39 +83,44 @@ def aportes():
 def administrar():
     return render_template('login_dir.html')
 
-@app.route('/login_a', methods =['GET', 'POST'])
+@app.route('/contacto') 
+def contacto():
+    return render_template('contactos.html')
+
+@app.route('/login_a', methods =[ 'POST'])
 def login_a():
     msg = ''
     account=[]
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
-        username = request.form['username']
+    if 'parada' in request.form and 'cedula' in request.form and 'password' in request.form:
+        parada = request.form['parada']
+        cedula = request.form['cedula']
         password = request.form['password']
         cur = connection.cursor()
-        cur.execute(f"SELECT * FROM tabla_index WHERE nombre ='{username}' AND password = '{password}'")                                       
-        accounts =cur.fetchall()
+        accounts=funciones.verif_p(cur,parada,cedula,password)
         for accountx in accounts:
-          account +=accountx 
+          account +=accountx  
         if account:
             session['loggedin'] = True
             session['id'] = account[0]
-            session['username'] = account[1]
+            session['nombre'] = account[2]
             fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H:%M:%S")  
             informacion=funciones.info_parada(cur,parada) 
-            miembros=funciones.lista_miembros(parada)
-            datos=funciones.aportacion(parada) 
-            cabecera=funciones.info_cabecera(parada)
+            miembros=funciones.lista_miembros(cur,parada)
+            datos=funciones.aportacion(cur,parada) 
+            cabecera=funciones.info_cabecera(cur,parada)
             cur.close()
-            return render_template('usuario.html',informacion=informacion,miembros=miembros,datos=datos,cabecera=cabecera,fecha=fecha)
+            return render_template('administrador.html',informacion=informacion,miembros=miembros,datos=datos,cabecera=cabecera,fecha=fecha)
         else:
-            msg = 'Incorrecto nombre de usuario / password !'           
-    return render_template('login_a.html', msg = msg)
+            msg = 'Incorrecto nombre de usuario / password !'  
+            flash(msg)         
+            return redirect(url_for('login'))
 
 
-@app.route('/login_dir', methods =['GET', 'POST'])
+@app.route('/login_dir', methods =['POST'])
 def login_dir():
     msg = ''
     account=[]
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+    if 'username' in request.form and 'password' in request.form:
         username = request.form['username']
         password = request.form['password']
         cur = connection.cursor()
@@ -162,7 +167,7 @@ def editar_miembro():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0')
 
 
 

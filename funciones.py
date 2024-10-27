@@ -82,3 +82,12 @@ def aportacion(cur,parada):
     data=cur.fetchall()
     return data
   
+def verif_p(cur,parada,cedula,password):
+    cur.execute(f"SELECT * FROM tabla_index WHERE  adm_password = '{password}'")
+    result=cur.fetchall()
+    if result:
+      cur.execute(f"SELECT * FROM {parada} WHERE  cedula = '{cedula}'")                                       
+      accounts =cur.fetchall()
+      return accounts
+    else: 
+        return

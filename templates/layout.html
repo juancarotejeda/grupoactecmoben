@@ -9,6 +9,16 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
 <link href="{{url_for('static',filename='css/estilo.css')}}" rel="stylesheet"> 
 </head>
+<script>
+   function myFunction() {
+     var x = document.getElementById("myTopnav");
+     if (x.className === "topnav") {
+       x.className += " responsive";
+     } else {
+       x.className = "topnav";
+     }
+   }
+</script>
 {% endblock %}   
 {% block content %} 
 <body>  
@@ -16,14 +26,18 @@
  <div class="logo">
    <img src="/static/images/logo_motoben.png" alt="logo de la Adm.">
 </div> 
-<nav >
- <ul class="menu">
-    <li><a href="{{url_for('aportes')}}">ADMINISTRADOR</a></li>
-    <li><a href="{{url_for('administrar')}}">DIRECCION</a></li>
- </ul>   
-</nav>
-<a href="#" class="btn"><button>Contactar</button></a>
-</header> 
+<div class="topnav" id="myTopnav">
+   <a href="{{url_for('login')}}">HOME</a>
+   <a href="{{url_for('aportes')}}">ADMINISTRADOR</a>
+   <a href="{{url_for('administrar')}}">DIRECCION</a>
+   <a href="{{url_for('contacto')}}">CONTACTAR</a>
+   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+   <i class="fa fa-bars"></i>
+   </a>
+ </div>
+
+</header>
+
 </body>
 {% endblock %}
 </html>

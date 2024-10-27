@@ -11,15 +11,21 @@
     <div class="center">
 		<div align="center" class="border">
 			<div class="header">
-				<h1 class="word">Presidente</h1>
+				<h1 class="word">Administrador</h1>
                 </div>
 			    <h2 class="word">
 				<form action="{{url_for('login_a')}}" method="post">
-				    <div class="msg">{{msg}}</div>
-                    <input id="parada" name="parada" type="text" value="{{parada}}" class="textbox"/></br></br>
-					<input id="username" name="username" type="text" placeholder="Nombre del presidente" class="textbox"/></br></br>
-					<input id="password" name="password" type="password" placeholder="Entre su Password" class="textbox"/></br></br></br>
-					<input type="submit" class="btn" value="Sign In">
+					{% with messages = get_flashed_messages()%}
+					{% if messages%}
+					  {% for message in messages%}
+					  <div class="msg">{{message}}</div>
+					  {%endfor%}
+					  {%endif%}
+					  {%endwith%}
+                    <input id="parada" name="parada" type="text" value="{{parada}}" class="input-contenedor" /></br></br>
+					<input id="cedula" name="cedula" type="text" placeholder="Numero de cedula del administrador" class="input-contenedor"/></br></br>
+					<input id="password" name="password" type="password" placeholder="Entre su Password" class="input-contenedor"/></br></br></br>
+					<input type="submit" class="btn" value="Ingresar">
 				</form>
 		</div>
     </div>
