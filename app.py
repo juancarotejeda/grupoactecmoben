@@ -76,8 +76,8 @@ def new_data():
       flash(msg)           
       return redirect(url_for('login'))    
         
-@app.route('/aportes') 
-def aportes():
+@app.route('/administrador') 
+def administrador():
     return render_template('login_a.html',parada=parada)
 
 @app.route('/administrar') 
@@ -203,7 +203,7 @@ def editar_miembro():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,port=9500)
 
 
 
