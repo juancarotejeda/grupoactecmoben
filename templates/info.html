@@ -136,9 +136,27 @@
   </table>
   </div>
   </section>
-  <section id="banco">
+  <section id="aporte">
     <div class="info">
-      <h1>CUENTA DE BANCO</h1>
+      <h1>Historial de Aportes y Pendientes</h1>
+      <table>
+         <tr>
+            <th>Nombre de asociado</th>
+            <th>Total cuotas</th>
+            <th>Cuotas pagadas</th>
+            <th>Cuotas Pendientes %</th>
+            <th>Porcentaje de pagos</th>
+         </tr>
+         {% for usuario in cuotas_hist %}
+         <tr>
+            <td>{{usuario[0]}}</td>
+            <td>{{usuario[3]}}</td>
+            <td>{{usuario[1]}}</td>
+            <td>{{usuario[2]}}</td>
+            <td>{{usuario[4]}}</td>
+         </tr>
+         {%endfor%}
+      </table>     
     </div>
   </section>
 

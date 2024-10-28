@@ -64,8 +64,9 @@ def new_data():
             cabecera=funciones.info_cabecera(cur,parada)
             miembros=funciones.lista_miembros(cur,parada)
             diario=funciones.diario_general(cur,parada)
+            cuotas_hist=funciones.prestamo_aport(cur,parada)
             cur.close()
-            return render_template('info.html',informacion=informacion,cabecera=cabecera,fecha=fecha,miembros=miembros,diario=diario) 
+            return render_template('info.html',informacion=informacion,cabecera=cabecera,fecha=fecha,miembros=miembros,diario=diario,cuotas_hist=cuotas_hist) 
         else:
             msg = 'Incorrecta contraseña de la parada!' 
             flash(msg)          
@@ -132,9 +133,9 @@ def login_dir():
             session['loggedin'] = True
             session['id'] = account[0]
             session['username'] = account[1]
-            fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H:%M:%S")  
-            cur.close()
-            return render_template('index.html',fecha=fecha)
+            fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H:%M:%S") 
+             
+            return render_template('digitadores.html',fecha=fecha)
         else:
             msg = 'Incorrecto nombre de usuario / password !'
     return render_template('login_dir.html', msg = msg)
@@ -174,6 +175,7 @@ def data_confirmacion():
          datos=funciones.aportacion(cur,parada) 
          hoy = datetime.strftime(datetime.now(),"%Y %m %d - %H:%M:%S")
          cabecera=funciones.info_cabecera(cur,parada)
+         cuotas_hist=funciones.prestamo_aport(cur,parada)
          cur.close()  
          return render_template("info.html",informacion=informacion,miembros=miembros,diario=diario,datos=datos,cabecera=cabecera,fecha={hoy})
 
@@ -201,7 +203,7 @@ def editar_miembro():
 
 
 if __name__ == "__main__":
-    app.run(debug=True,host='0.0.0.0')
+    app.run(debug=True)
 
 
 

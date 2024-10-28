@@ -109,3 +109,22 @@ def crear_p(cur,parada,string,valor_cuota,hoy):
        n_pendiente=int(suma_no) * float(valor_cuota)
        cur.execute(f"UPDATE tabla_index SET aporte={n_aporte}, pendiente={n_pendiente} WHERE nombre='{parada}'")
        return
+   
+def prestamo_aport(cur,parada):
+    vgral=[]
+    cur.execute(f"SELECT nombre FROM {parada}")
+    list_nomb=cur.fetchall()
+    for nombre in list_nomb:
+        cur.execute(f"SELECT COUNT(estado) FROM {parada}_cuota WHERE estado = 'pago' and nombre='{nombre[0]}'") 
+        var_x = cur.fetchall()
+        for var_p in var_x:
+              var1=var_p[0]
+        cur.execute(f"SELECT COUNT(estado) FROM {parada}_cuota WHERE estado = 'no_pago' and nombre='{nombre[0]}'")
+        var_z = cur.fetchall()
+        for var_n in var_z:
+              var2=var_n[0]   
+        sub_t=var1+var2      
+        avg=round((var1/sub_t)*100,2)           
+        vgral+=(nombre[0],var1,var2,sub_t,avg) 
+    list_1=dividir_lista(vgral,5)                    
+    return list_1
