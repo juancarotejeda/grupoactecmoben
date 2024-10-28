@@ -7,15 +7,26 @@
 {% block content %}
 {{ super() }}
 <section id="cuotas" class="head-info-adm">
+<form action="/data_cuotas" method="POST">    
 <div class="head-info-adm-up">
    <h1>LISTA DE PAGOS</h1>
 </div>
-<div class="head-info-adm-down">
-
+<div class="head-info-adm-down"> 
+   <label for="paradas">PARADA:</label>             
+   <input type="text" name="parada" value="{{parada}}" id="paradas">
+                        
+   <label for="fecha">FECHA:</label>
+   <input type="text" name="time" value="{{fecha}}" id="fecha">
+  
+   <label for="miembro">NUMERO DE MIEMBROS:</label>
+   <input type="text" name="numero" value="{{ cabecera[2]}}" id="miembro">         
+  
+   <label for="valor">CUOTA:</label>
+   <input type="text" name="valor" value="{{ cabecera[0]}}" id="valor">
 </div>    
 </section>
 <section id="tabla_cuotas">
-<form action="data_cuotas" method="post">   
+  
 <table>
    <tr></tr>
       <th>ITEM</th>
@@ -35,7 +46,7 @@
          </select>
       </td>
       <td>
-         <input type="text" class="campo_nombre" name="nombre" value="{{ user[1]}}" maxlength="50" placeholder=" ">
+         <input type="text" class="campo_nombre" name="nombre" value="{{ user[1]}}"  placeholder=" ">
       </td>
       <td>
          <input type="text" class="campo_id" name="documento" value="{{ user[2]}}" id="">

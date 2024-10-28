@@ -91,3 +91,21 @@ def verif_p(cur,parada,cedula,password):
       return accounts
     else: 
         return
+
+def crear_p(cur,parada,string,valor_cuota,hoy):
+       suma_no=[];suma_si=[]
+       cur.execute(f'CREATE TABLE IF NOT EXISTS {parada}_cuota( item VARCHAR(50)  NULL, fecha VARCHAR(50)  NULL, estado VARCHAR(50)  NULL, nombre VARCHAR(50)  NULL, cedula VARCHAR(50)  NULL)')
+       for data in string:
+          cur.execute(f"INSERT INTO {parada}_cuota(item, fecha, estado, nombre, cedula) VALUES('{data[0]}', '{hoy}',  '{data[1]}', '{data[2]}', '{data[3]}')")    
+       cur.execute(f"SELECT COUNT(estado) FROM {parada}_cuota WHERE estado = 'no_pago' ")   
+       suma=cur.fetchall()
+       for num in suma:
+           suma_no=num[0]       
+       cur.execute(f"SELECT COUNT(estado) FROM {parada}_cuota WHERE estado = 'pago' ")   
+       sumas=cur.fetchall() 
+       for numb in sumas:
+           suma_si=numb[0]        
+       n_aporte=int(suma_si) * float(valor_cuota)
+       n_pendiente=int(suma_no) * float(valor_cuota)
+       cur.execute(f"UPDATE tabla_index SET aporte={n_aporte}, pendiente={n_pendiente} WHERE nombre='{parada}'")
+       return

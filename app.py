@@ -109,7 +109,7 @@ def login_a():
             datos=funciones.aportacion(cur,parada) 
             cabecera=funciones.info_cabecera(cur,parada)
             cur.close()
-            return render_template('administrador.html',informacion=informacion,miembros=miembros,datos=datos,cabecera=cabecera,fecha=fecha)
+            return render_template('administrador.html',informacion=informacion,miembros=miembros,datos=datos,cabecera=cabecera,fecha=fecha,parada=parada)
         else:
             msg = 'Incorrecto nombre de usuario / password !'  
             flash(msg)         
@@ -144,7 +144,41 @@ def logout():
 	session.pop('loggedin', None)
 	session.pop('id', None)
 	session.pop('username', None)
-	return redirect(url_for('login'))
+	return redirect(url_for('data_confirmacion'))
+
+@app.route("/data_cuotas", methods=["GET","POST"])
+def data_cuotas():
+    my_list=[]
+    if request.method == 'POST': 
+        parada=request.form['parada']      
+        hoy = request.form['time']
+        cant=request.form['numero']
+        valor_cuota=request.form['valor']
+        for i in range(int(cant)): 
+            my_list +=(request.form.getlist('item')[i],   
+            request.form.getlist('estado')[i],   
+            request.form.getlist('nombre')[i], 
+            request.form.getlist('documento')[i])     
+        string=funciones.dividir_lista(my_list,4) 
+        cur = connection.cursor()
+        funciones.crear_p(cur,parada,string,valor_cuota,hoy)  
+        cur.close()                                                        
+        return redirect(url_for('data_confirmacion'))   
+ 
+@app.route("/data_confirmacion", methods=["GET","POST"])
+def data_confirmacion():
+         cur = connection.cursor()
+         informacion=funciones.info_parada(cur,parada) 
+         miembros=funciones.lista_miembros(cur,parada)
+         diario=funciones.diario_general(cur,parada)
+         datos=funciones.aportacion(cur,parada) 
+         hoy = datetime.strftime(datetime.now(),"%Y %m %d - %H:%M:%S")
+         cabecera=funciones.info_cabecera(cur,parada)
+         cur.close()  
+         return render_template("info.html",informacion=informacion,miembros=miembros,diario=diario,datos=datos,cabecera=cabecera,fecha={hoy})
+
+
+
 
 @app.route('/nueva_p') 
 def nueva_p(): 
