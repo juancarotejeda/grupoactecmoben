@@ -151,7 +151,7 @@ def logout():
 def data_cuotas():
     my_list=[]
     if request.method == 'POST': 
-        parada=request.form['parada']      
+        #parada=request.form['parada']      
         hoy = request.form['time']
         cant=request.form['numero']
         valor_cuota=request.form['valor']
@@ -177,7 +177,7 @@ def data_confirmacion():
          cabecera=funciones.info_cabecera(cur,parada)
          cuotas_hist=funciones.prestamo_aport(cur,parada)
          cur.close()  
-         return render_template("info.html",informacion=informacion,miembros=miembros,diario=diario,datos=datos,cabecera=cabecera,fecha={hoy})
+         return render_template("info.html",informacion=informacion,miembros=miembros,diario=diario,datos=datos,cabecera=cabecera,fecha={hoy},cuotas_hist=cuotas_hist)
 
 
 
