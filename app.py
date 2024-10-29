@@ -80,8 +80,8 @@ def new_data():
 def administrador():
     return render_template('login_a.html',parada=parada)
 
-@app.route('/administrar') 
-def administrar():
+@app.route('/digitadores') 
+def digitadores():
     return render_template('login_dir.html')
 
 @app.route('/contacto') 
@@ -110,35 +110,29 @@ def login_a():
             datos=funciones.aportacion(cur,parada) 
             cabecera=funciones.info_cabecera(cur,parada)
             cur.close()
-            return render_template('administrador.html',informacion=informacion,miembros=miembros,datos=datos,cabecera=cabecera,fecha=fecha,parada=parada)
+            return render_template('digitadores.html',informacion=informacion,miembros=miembros,datos=datos,cabecera=cabecera,fecha=fecha,parada=parada)
         else:
             msg = 'Incorrecto nombre de usuario / password !'  
             flash(msg)         
-            return redirect(url_for('login'))
+            return redirect(url_for('data_confirmacion'))
 
 
 @app.route('/login_dir', methods =['POST'])
 def login_dir():
-    msg = ''
-    account=[]
-    if 'username' in request.form and 'password' in request.form:
-        username = request.form['username']
+  msg = ''
+  account=[]
+  if 'username' in request.form and 'password' in request.form:
+        nombre = request.form['username']
         password = request.form['password']
         cur = connection.cursor()
-        cur.execute(f"SELECT * FROM usuarios WHERE nombre ='{username}' AND password = '{password}'")
-        accounts =cur.fetchall()
-        for accountx in accounts:
-          account +=accountx                                          
-        if account:
-            session['loggedin'] = True
-            session['id'] = account[0]
-            session['username'] = account[1]
-            fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H:%M:%S") 
-             
-            return render_template('digitadores.html',fecha=fecha)
+        account=funciones.verif_dig(cur,nombre,password) 
+        if account == True:
+            cur.close()
+            return render_template('digitadores.html')
         else:
-            msg = 'Incorrecto nombre de usuario / password !'
-    return render_template('login_dir.html', msg = msg)
+            msg = 'Incorrecto nombre de usuario / password !'  
+            flash(msg)         
+            return redirect(url_for('data_confirmacion'))
 
 @app.route('/logout')
 def logout():
@@ -203,7 +197,7 @@ def editar_miembro():
 
 
 if __name__ == "__main__":
-    app.run(debug=True,port=9500)
+    app.run(debug=True,port=9500,host='0.0.0.0')
 
 
 

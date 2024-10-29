@@ -128,3 +128,16 @@ def prestamo_aport(cur,parada):
         vgral+=(nombre[0],var1,var2,sub_t,avg) 
     list_1=dividir_lista(vgral,5)                    
     return list_1
+
+def verif_dig(cur,nombre,password):
+    print(nombre,password)
+    cur.execute(f"SELECT username FROM digitadores WHERE password='{password}'")
+    result=cur.fetchall()
+    if result !=[]:
+       for valor in result:   
+            if valor[0]==nombre:
+               return True
+            else:
+              False
+    else:
+        return False
