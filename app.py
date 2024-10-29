@@ -97,24 +97,18 @@ def login_a():
         cedula = request.form['cedula']
         password = request.form['password']
         cur = connection.cursor()
-        accounts=funciones.verif_p(cur,parada,cedula,password)
-        for accountx in accounts:
-          account +=accountx  
-        if account:
-            session['loggedin'] = True
-            session['id'] = account[0]
-            session['nombre'] = account[2]
+        account=funciones.verif_p(cur,parada,cedula,password) 
+        if account ==True:
             fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H:%M:%S")  
             informacion=funciones.info_parada(cur,parada) 
             miembros=funciones.lista_miembros(cur,parada)
             datos=funciones.aportacion(cur,parada) 
             cabecera=funciones.info_cabecera(cur,parada)
             cur.close()
-            return render_template('digitadores.html',informacion=informacion,miembros=miembros,datos=datos,cabecera=cabecera,fecha=fecha,parada=parada)
+            return render_template('administrador.html',informacion=informacion,miembros=miembros,datos=datos,cabecera=cabecera,fecha=fecha,parada=parada)
         else:
-            msg = 'Incorrecto nombre de usuario / password !'  
-            flash(msg)         
-            return redirect(url_for('data_confirmacion'))
+            msg = 'Incorrecto nombre de usuario / password !'           
+            return render_template('login_a.html',msg=msg)
 
 
 @app.route('/login_dir', methods =['POST'])
@@ -124,15 +118,17 @@ def login_dir():
   if 'username' in request.form and 'password' in request.form:
         nombre = request.form['username']
         password = request.form['password']
+        print(nombre,password)
         cur = connection.cursor()
-        account=funciones.verif_dig(cur,nombre,password) 
-        if account == True:
-            cur.close()
+        account=funciones.verif_dig(cur,nombre,password)
+        print(account)
+        if account == True:        
             return render_template('digitadores.html')
         else:
-            msg = 'Incorrecto nombre de usuario / password !'  
-            flash(msg)         
-            return redirect(url_for('data_confirmacion'))
+            print('hola')
+            msg = 'Incorrecto nombre de usuario / password !'          
+            return render_template("login_dir.html")                 
+
 
 @app.route('/logout')
 def logout():

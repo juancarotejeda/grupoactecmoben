@@ -88,9 +88,12 @@ def verif_p(cur,parada,cedula,password):
     if result:
       cur.execute(f"SELECT * FROM {parada} WHERE  cedula = '{cedula}'")                                       
       accounts =cur.fetchall()
-      return accounts
+      if accounts != []:
+         return True
+      else:
+         return False 
     else: 
-        return
+        return False
 
 def crear_p(cur,parada,string,valor_cuota,hoy):
        suma_no=[];suma_si=[]
@@ -130,14 +133,16 @@ def prestamo_aport(cur,parada):
     return list_1
 
 def verif_dig(cur,nombre,password):
-    print(nombre,password)
     cur.execute(f"SELECT username FROM digitadores WHERE password='{password}'")
+    valor=[]
     result=cur.fetchall()
-    if result !=[]:
-       for valor in result:   
-            if valor[0]==nombre:
-               return True
-            else:
-              False
-    else:
+    if result != []:
+       for valores in result:
+           valor=valores[0]
+       if valor == nombre:
+          return True
+       else:
+         return False 
+    else: 
         return False
+
