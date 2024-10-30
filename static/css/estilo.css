@@ -327,3 +327,64 @@ input[type="password"]{
     padding-bottom:5px ;   
 
 }
+
+.pago{
+    margin:auto;
+    background-color: #000000;
+    color: white;
+    font-size: 12px;
+    padding: 30px;
+    width: 400px;
+    border:solid 10px LightSteelBlue;
+    overflow: hidden;
+    }
+    
+    .pago fieldset{
+    border: none;
+    }
+    
+    .pago input{
+    font-size:12px;
+    background: yellow;
+    border:solid 1px Green;
+    border-radius: 5px;
+    float: right;
+    margin-right: 40px;
+    width: 150px;
+    }
+    
+    .pago  ol li{
+    line-height: 25px;
+    list-style: none;
+    }
+    
+    .pago  [required]{
+    border:solid 1px red;
+    }
+    
+    .pago input:required {
+    outline: 1px solid red;
+    }
+
+    .socios{
+        margin:auto;
+        background-color: #000000;
+        color: white;
+        font-size: 14px;
+        padding: 30px;
+        width: 400px;
+        border:solid 5px  LightSteelBlue;
+        overflow: hidden;
+    }
+
+    .socios option {
+background-color: #ddd;
+color: black;
+
+    }
+
+    .socios input{
+        font-size:14px;
+        background: yellow;
+        width:auto;
+        }

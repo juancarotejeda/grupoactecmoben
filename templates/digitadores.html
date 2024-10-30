@@ -8,24 +8,52 @@
 {{ super() }}
 
 <section id="n_parada">
-<div class="adm-info">
-    
+<div class="adm-info">   
     <div class="adm-body">
     <div class="adm-header">CREAR NUEVA PARADA</div>    
     <div class="entrar">    
-    <form  method='POST'action="{{ url_for('nueva_p') }}"> 
-            <label for="parada_n">PARADA</label>
-            <input type="text" name="parada_n" id="parada_n">                 
-            <label for="dir">DIRECCION</label>
-            <input type="text" name="dir" id="dir">           
-            <label for="sector">SECTOR</label>
-            <input type="text" name="sector" id="sector">       
-            <label for="provincia">PROVINCIA</label>
-            <input type="text" name="provincia" id="provincia">    
-            <label for="region">REGION</label>
-            <input type="text" name="region" id="region">       
-            <label for="aporte">APORTE</label>
-            <input type="text" name="aporte" id="aporte" >    
+    <form  method='POST'action="{{ url_for('nueva_p') }}" class="pago"> 
+            <fieldset class="pago">
+            <legend>Datos de la parada</legend>
+            <ol>
+            <li>
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" type="text" placeholder="Escribe el nombre de la parada" required autofocus>
+            </li>
+            <li>
+            <label for="direccion">Direccion</label>
+            <input id="direccion" name="direccion" type="text" placeholder="direccion" required>
+            </li>
+            <li>
+            <label for="municipio">Municipio/Sector</label>
+            <input id="municipio" name="municipio" type="text" required>
+            </li>
+            <li>
+            <label for="provincia">Provincia</label>
+            <input id="provincia" name="provincia" type="text" required>
+            </li>
+            <li>
+            <label for="zona">Zona geografica</label>
+            <input id="zona" name="provincia" type="text" required>
+            </li>                  
+            <li>
+            <label for="cedula">Cedula</label>
+            <input id="cedula" name="cedula" type="tel" placeholder="Ej. 00166889999" required>
+            </li>
+            <li>
+            <label for="telefono">Telefono</label>
+            <input id="telefono" name="telefono" type="tel" placeholder="Ej. 8096688999" required>
+            </li>
+            <li>
+            <label for="funcion">Funcion</label>
+            <input id="funcion" name="funcion" type="text" required>
+            </li>
+            </ol>
+            </fieldset>
+            -------------------------------------------------
+            <fieldset class="pago">
+            <button type="submit">Crear parada</button>
+            </fieldset> 
             <div class="enviar">
                 <input type="submit" value="Enviar" class="adm-button">
                 <br>
@@ -40,7 +68,7 @@
 <div class="adm-info">
     <div class="adm-header"><h1>AGREGAR NUEVO ASOCIADO</h1></div>
     <form action="" method="POST">
-        <fieldset>
+        <fieldset class="socios">
             <legend>Datos de los Socios(as)</legend>
             <label for="nombre">Nombre y apellidos: </label>
             <input id="nombre" type="text"><br>
@@ -94,10 +122,7 @@
             <textarea rows="10" cols="50" placeholder="Mensaje" id="mensaje"></textarea>
         </fieldset>  
         <input type="submit" value="Enviar">
-    </form>
-
-
-    <h2><a href="{{ url_for('logout') }}" class="btn">Salir</a></h2>  
+    </form> 
 </div>
 </section>
 <section id="editar_pa">

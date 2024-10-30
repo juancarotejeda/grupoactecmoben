@@ -52,7 +52,7 @@ def new_data():
         flash(msg)          
         return redirect(url_for('login'))
     
-    cur.execute(f"SELECT cedula FROM {parada} WHERE cedula = '{cedula}' ")
+    cur.execute(f"SELECT cedula FROM {parada} WHERE cedula='{cedula}'")
     result = cur.fetchall()
     if result != []:   
       cur.execute(f"SELECT password FROM tabla_index  WHERE nombre ='{parada}'" )
@@ -118,16 +118,13 @@ def login_dir():
   if 'username' in request.form and 'password' in request.form:
         nombre = request.form['username']
         password = request.form['password']
-        print(nombre,password)
         cur = connection.cursor()
         account=funciones.verif_dig(cur,nombre,password)
-        print(account)
         if account == True:        
             return render_template('digitadores.html')
         else:
-            print('hola')
             msg = 'Incorrecto nombre de usuario / password !'          
-            return render_template("login_dir.html")                 
+            return render_template("login_dir.html",msg)                 
 
 
 @app.route('/logout')
