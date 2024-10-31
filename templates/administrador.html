@@ -58,20 +58,27 @@
 </form>
 </section>
 <section id="bancos">
+   <form action="data_bancos" method="post"> 
    <fieldset class="pago">
-      <h1>REPORTE BANCARIO</h1>
-   
+   <legend><h1>REPORTE BANCARIO</h1></legend>
+   <ol>
+   <li>   
       {%for datos in informacion %}
       <h4>PARADA:{{datos[2]}}</h4>
       {%endfor%}
-      <form action="data_bancos" method="post"> 
+   </li>   
       {%for datos in informacion %}   
       <input type="hidden" name="parada" value="{{datos[2]}}" id="parada">  
-      {%endfor%} 
-      <label for="tipo"><h4>CUENTA_BANCO</h4></label>
-      <input type="hidden" name="tipo" value="CUENTA_BANCO" id="tipo"><br> 
+      {%endfor%}
+   <li>    
+      <label for="tipo"><h4>REPORTE_BANCARIO</h4></label>
+      <input type="hidden" name="tipo" value="CUENTA_BANCO" id="tipo">
+   </li>
+   <li>    
       <label for="fecha">FECHA:</label>
-      <input type="text" name="time" value="{{fecha}}" id="fecha"><br>                
+      <input type="text" name="time" value="{{fecha}}" id="fecha">
+   </li>
+   <li>                   
       <label for="descripcion">BANCO:</label>
       <select name="nom_banco" id="descripcion">
          <option value="Sin Banco">No cuenta de Banco</option>
@@ -82,24 +89,29 @@
          <option value="Asociacion la Nacional">Asociacion la Nacional</option>
          <option value="ScotiaBank">ScotiaBank</option>
       </select>
-      <br> 
+   </li>
+   <li> 
       <label for="cuenta">TIPO DE CUENTA:</label>
       <select name="t_cuenta" id="cuenta">
          <option value="Sin cuentas">Sin cuentas</option>
          <option value="Cuenta de Ahorro">Cuenta de Ahorro</option>
          <option value="Cuenta Corriente">Cuenta Corriente</option>      
       </select>
-      <br>      
+   </li> 
+   <li>     
       <label for="numero">NUMERO DE CUENTA:</label>
       <input type="text" name="n_cuenta" value="0000000000" id="numero">
-      <br>     
+   </li> 
+   <li>    
       <label for="balance">BALANCE DE LA CUENTA:</label>
       <input type="text" name="balance" value="0.0000" id="balance">
-      <br>
+   </li>
+   <li>
       <button type="submit">ENVIAR</button>
-      </form>
-      <br>      
-   </fieldset>
+   </li> 
+   </ol>   
+   </form>     
+</fieldset>
 </section>
 <section id="gastos">
    <fieldset class="pago">
@@ -144,17 +156,26 @@
    </fieldset>
    </section>
    <section id="ingresos" >
-   <fieldset class="pago">
-   <h3>REPORTE DE INGRESOS</h3>
+   <form action="data_ingresos" method="post">
+   <fieldset class="pago">   
+   <legend><h3>REPORTE DE INGRESOS</h3></legend>
+   <ol>
+   <li>   
    {%for datos in informacion %}
       <h4>PARADA:{{datos[2]}}</h4>
-   {%endfor%}
-   <form action="data_ingresos" method="post">
-   <input type="hidden" name="parada" value="{{datos[2]}}" id="parada">                          
+   {%endfor%} 
+   </li> 
+   
+   <input type="hidden" name="parada" value="{{datos[2]}}" id="parada"> 
+   <li> 
    <label for="ipo"><h4>INGRESOS</h4></label>
-   <input type="hidden" name="tipo" value="INGRESOS" id="tipo"><br>
+   <input type="hidden" name="tipo" value="INGRESOS" id="tipo">
+   </li>
+   <li>
    <label for="fecha">FECHA:</label>
-   <input type="text" name="time" value="{{fecha}}" id="fecha"><br>       
+   <input type="text" name="time" value="{{fecha}}" id="fecha">
+   </li> 
+   <li>      
    <label for="descripcion_i">DESCRIPCION:</label>
    <select name="descripcion_i" id="descripcion_i">
       <option value="No ingresos">No ingresos</option>
@@ -164,53 +185,77 @@
       <option value="Recaudacion de Fondo">Recaudacion de Fondo</option>
       <option value="Ingreso segun recibo anexo">Ingreso segun recibo anexo</option>
    </select>
-   <br>
+   </li>
+   <li>
    <label for="cantidad">CANTIDA:</label>
    <input type="text" name="cantidad_i" value="0.0" id="cantidad">
-   <br>
+   </li>
+   <li>
    <button type="submit">ENVIAR</button>
+   </li>
    </form>
    </fieldset>
 </section>
 <section id="prestamos" >
-   <fieldset class="pago">
-   <h3>REPORTE PRESTAMOS</h3>
+<form action="data_prestamos" method="post">    
+<fieldset class="pago">
+<legend><h3>REPORTE PRESTAMOS</h3></legend>
+<ol>
+<li>
    {%for datos in informacion %}
       <h4>PARADA: {{datos[2]}}</h4>
    {%endfor%}
-   <form action="data_prestamos" method="post">  
-   <input type="hidden" name="parada" value="{{datos[2]}}" id="parada"> 
-   <label for="tipo"><h4>PRESTAMOS</h4></label>
-   <input type="hidden" name="tipo" value="PRESTAMOS" id="tipo"><br> 
-   <label for="fecha">FECHA:</label>
+</li> 
+<input type="hidden" name="parada" value="{{datos[2]}}" id="parada"> 
+<label for="tipo"><h4>PRESTAMOS</h4></label>
+<li>   
+<input type="hidden" name="tipo" value="PRESTAMOS" id="tipo"><br> 
+<label for="fecha">FECHA:</label>
+</li> 
+<li>  
    <input type="text" name="time" value="{{fecha}}" id="fecha"><br>  
    <label for="beneficiado">BENEFICIADO:</label>
+</li>
+<li>   
    <select name="descripcion_p" id="beneficiado">         
       <option value="Sin Beneficiario ">Sin Beneficiario</option>
       {% for usuario in miembros %}
       <option value="{{usuario[1]}}">{{usuario[1]}}</option>
       {%endfor%}
    </select>
-   <br>
+</li>
+<li>
    <label for="monto">MONTO:</label>
    <input type="text" name="cantidad_p" id="monto" value="0.0">
-   <br>
+</li>
+<li>
    <button type="submit">ENVIAR</button>
-   </form>
-   </fieldset>
-   </section>                     
-   <section id="prestamos" class="prestamos">
-   <fieldset class="pago">
-   <h3>REPORTE DE ABONO</h3>
+</li>
+</ol>
+</fieldset>
+</form>
+</section>
+
+<section id="prestamos" class="prestamos">
+<form action="data_abonos" method="post">
+<fieldset class="pago">
+<legend><h3>REPORTE DE ABONO A PRESTAMOS</h3></legend>
+<ol>
+   <li>
    {%for datos in informacion %}
    <h4>PARADA: {{datos[2]}}</h4>
    {%endfor%} 
-   <form action="data_abonos" method="post">                      
-   <input type="hidden" name="parada" value="{{datos[2]}}" id="parada">  
+   </li>                   
+   <input type="hidden" name="parada" value="{{datos[2]}}" id="parada"> 
+   <li> 
    <label for="tipo"><h4>ABONOS</h4> </label>
-   <input type="hidden" name="tipo" value="ABONOS" id="tipo"><br>
+   <input type="hidden" name="tipo" value="ABONOS" id="tipo">
+   </li>
+   <li>
    <label for="fecha">FECHA:</label>
-   <input type="text" name="time" value="{{fecha}}" id="fecha"><br>
+   <input type="text" name="time" value="{{fecha}}" id="fecha">
+   </li>
+   <li>
    <label for="abonar">ABONAR A:</label>
    <select name="descripcion_a" id="abonar">                 
       <option value="Nigun Abono ">Nigun Abono</option>
@@ -218,11 +263,13 @@
       <option value="{{usuario[1]}}">{{usuario[1]}}</option>
       {%endfor%}
    </select>
-   <br>
+   </li>
+   <li>
    <label for="cantidad">CANTIDA:</label>
    <input type="text" name="cantidad_a" id="cantidad"  value=0.0>
-   <br>
+   </li>
    <button type="submit">ENVIAR</button>
+</ol>   
 </fieldset>
 </section>
 <footer>

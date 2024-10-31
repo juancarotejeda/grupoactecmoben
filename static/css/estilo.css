@@ -91,8 +91,8 @@ align-items: center;
 
 
 .headers .logo img{
-    height: 85px;
-    width:auto;
+    height: 50px;
+    width:95px;
     display: flex;
     justify-content: center;
     transition: all 0.3s;
@@ -408,5 +408,17 @@ color: black;
           .pago select option:disabled{
             background: blue;
           }
+
+          .pago input{
+            font-size:12px;
+            background: yellow;
+            border:solid 1px Green;
+            border-radius: 5px;
+            float: right;
+            margin-right: 40px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 150px;
+            }
           
  
