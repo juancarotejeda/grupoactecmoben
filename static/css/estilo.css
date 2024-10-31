@@ -141,7 +141,7 @@ align-items: center;
   @media screen and (max-width: 700px) {
     .topnav a:not(:first-child) {display: none;}
     .topnav a.icon {
-      float: right;
+      float: left;
       display: block;
     }
   }
@@ -337,6 +337,7 @@ input[type="password"]{
     width: 400px;
     border:solid 10px LightSteelBlue;
     overflow: hidden;
+    margin-bottom: 10px;
     }
     
     .pago fieldset{
@@ -388,3 +389,24 @@ color: black;
         background: yellow;
         width:auto;
         }
+
+       .pago select{
+            font-size:12px;
+            background: yellow;
+            border:solid 1px Green;
+            border-radius: 5px;
+            float: right;
+            margin-right: 40px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 150px;
+          }
+          .pago select option{
+            background:black;
+            color:red;
+          }
+          .pago select option:disabled{
+            background: blue;
+          }
+          
+ 

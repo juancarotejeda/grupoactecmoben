@@ -166,7 +166,63 @@ def data_confirmacion():
          cur.close()  
          return render_template("info.html",informacion=informacion,miembros=miembros,diario=diario,datos=datos,cabecera=cabecera,fecha={hoy},cuotas_hist=cuotas_hist)
 
+@app.route("/data_bancos",methods=["GET","POST"])
+def data_bancos(): 
+    if request.method == 'POST':
+       fecha = request.form['time']
+       parada=request.form['parada'] 
+       nom_banco = request.form['nom_banco'] 
+       t_cuenta = request.form['t_cuenta']
+       n_cuenta = request.form['n_cuenta']
+       balance_c = request.form['balance']
+       cur = connection.cursor() 
+       funciones.estado_bancario(cur,parada,fecha,nom_banco,t_cuenta,n_cuenta,balance_c)      
+       cur.close()   
+       return redirect(url_for('data_confirmacion'))   
 
+@app.route("/data_gastos",methods=["GET","POST"])
+def data_gastos():
+    if request.method == 'POST':
+       fecha=request.form['time']
+       descripcion_gastos = request.form['descripcion_g'] 
+       cantidad_gastos = request.form['cantidad_g']
+       cur = connection.cursor() 
+       funciones.report_gastos(cur,parada,fecha,descripcion_gastos,cantidad_gastos)          
+       cur.close()
+       return redirect(url_for('data_confirmacion')) 
+
+@app.route("/data_ingresos",methods=["GET","POST"])
+def data_ingresos(): 
+    if request.method == 'POST':
+       fecha=request.form['time']
+       descripcion_ingreso = request.form['descripcion_i'] 
+       cantidad_ingreso = request.form['cantidad_i'] 
+       cur = connection.cursor() 
+       funciones.report_ingresos(cur,parada,fecha,descripcion_ingreso,cantidad_ingreso)          
+       cur.close()  
+       return redirect(url_for('data_confirmacion'))        
+              
+@app.route("/data_prestamos",methods=["GET","POST"])
+def data_prestamos(): 
+    if request.method == 'POST':            
+       fecha=request.form['time']              
+       prestamo = request.form['descripcion_p'] 
+       monto = request.form['cantidad_p']
+       cur = connection.cursor() 
+       funciones.report_prestamo(cur,parada,fecha,prestamo,monto)          
+       cur.close()
+       return redirect(url_for('data_confirmacion')) 
+
+@app.route("/data_abonos",methods=["GET","POST"])
+def data_abonos(): 
+    if request.method == 'POST':               
+       fecha=request.form['time']       
+       abono_a = request.form['descripcion_a'] 
+       cantidad_a = request.form['cantidad_a']  
+       cur = connection.cursor() 
+       funciones.report_abono(cur,parada,fecha,abono_a,cantidad_a)          
+       cur.close()
+       return redirect(url_for('data_confirmacion')) 
 
 
 @app.route('/nueva_p') 

@@ -35,8 +35,8 @@
 <ul>
 <li><label for="press">Presidente:</label>
 <input type="text" value="{{cabecera[3]}}" id="press"></li>
-<li><label for="veedor">Veedor:</label>
-<input type="text" value="{{cabecera[4]}}" id="veedor"></li>
+<li><label for="veedor">Pte. Federacion:</label>
+<input type="text" value="xxxxxxx" id="veedor"></li>
 <li><label for="miemb">Miembros:</label>
 <input type="text" value="{{cabecera[2]}}" id="miemb"></li>
 <li><label for="cuota">cuota:</label>
@@ -55,11 +55,11 @@
 {%endfor%}
 <table>
    <tr>
-      <th>ITEM</th>
-      <th>NOMBRE_COMPLETO</th>
-      <th>CEDULA</th>
-      <th>TELEFONO</th>
-      <th>FUNCION</th>
+      <th>Item</th>
+      <th>Nombre del asociado</th>
+      <th>Cedula</th>
+      <th>Telefono</th>
+      <th>Funcion</th>
    </tr>
    {% for usuario in miembros %}
    <tr>
@@ -78,60 +78,59 @@
   <h1>INFORMACION FINANCIERA</h1>
   <table>
      <tr>
-     <tr>
-        <th>ITEM</th>
-        <th>TIPO_DE_INFORMACION</th>
-        <th>CANTIDAD</th>
-        <th>MONEDA</th>
+        <th>Item</th>
+        <th>Informacion financiera</th>
+        <th>Total al momento</th>
+        <th>Moneda</th>
      </tr>
      <tr>
-        <tD>1</tD>
-        <td>BALANCE BANCARIO:</td>
+      <tD>1</tD>
+      <td>Historico de aporta de los asociados :</td>
+      <td>{{diario[2]}}</td>
+      <td>RD$</td>
+   </tr>
+   <tr>
+      <tD>2</tD>
+      <td>Historico de ingresos por otras actividades :</td>
+      <td> {{diario[4]}}</td>
+      <td>RD$</td>
+   </tr>
+   <tr>
+      <tD>3</tD>
+      <td> Historico de abonos a prestamos de los asociados:</td>
+      <td>{{diario[6]}}</td>
+      <td>RD$</td>
+   </tr>
+     <tr>
+      <tD>4</tD>
+      <td>Historico de Prestamos facilitados los asociados :</td>
+      <td>{{diario[1]}}</td>
+      <td>RD$</td>
+   </tr>
+   <tr>
+      <tD>5</tD>
+      <td>Historial de cuotas no pagadas por los asociados:</td>
+      <td>{{diario[5]}}</td>
+      <td>RD$</td>
+   </tr>
+   <tr>
+      <tD>6</tD>
+      <td>Historial de gastos incurridos por la parada :</td>
+      <td>{{diario[3]}}</td>
+      <td>RD$</td>
+   </tr>
+
+     <tr>
+        <tD>7</tD>
+        <td>Informacion de balance bancario actualizada:</td>
         <td>{{diario[7]}}</td>
         <td>RD$</td>
      </tr>
      <tr>
-        <tD>2</tD>
-        <td>BALANCE A LA FECHA:</td>
+        <tD>8</tD>
+        <td>Balance segun datos aportas por el presidente:</td>
         <td>{{diario[0]}}</td>
         <td>RD$</td>
-     </tr>
-     <tr>
-        <tD>3</tD>
-        <td>TOTAL DE PRESTAMOS :</td>
-        <td>{{diario[1]}}</td>
-        <td>RD$</td>
-     </tr>
-     <tr>
-        <tD>4</tD>
-        <td>TOTAL DE INGRESOS :</td>
-        <td>{{diario[2]}}</td>
-        <td>RD$</td>
-     </tr>
-     <tr>
-        <tD>5</tD>
-        <td>TOTAL DE GASTOS :</td>
-        <td>{{diario[3]}}</td>
-        <td>RD$</td>
-     </tr>
-     <tr>
-        <tD>6</tD>
-        <td>TOTAL DE APORTES :</td>
-        <td> {{diario[4]}}</td>
-        <td>RD$</td>
-     </tr>
-     <tr>
-        <tD>7</tD>
-        <td>AORTES PENDIENTES:</td>
-        <td>{{diario[5]}}</td>
-        <td>RD$</td>
-     </tr>
-     <tr>
-        <tD>8</tD>
-        <td> ABONO A PRESTAMOS:</td>
-        <td>{{diario[6]}}</td>
-        <td>RD$</td>
-     </tr>
      </tr>
   </table>
   </div>
