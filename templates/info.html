@@ -7,46 +7,50 @@
 {% block content %}
 {{ super() }}
 <section id="info-parada">
-<div class="head-info">
-<div class="head-tipo"><h3>INFORMACION DE LA PARADA</h3></div>    
-<div class="head-contenido">
-<div class="head-contenido1">   
+ <fieldset class="encabezado"> 
+    
 {%for datos in informacion %}
 <ul>
-<li><label for="parada">Parada:</label>
-<input type="text" value="{{datos[1]}}" id="parada"></li>
-<li><label for="codigo">Codigo:</label>
-<input type="text" value="{{datos[0]}}" id="codigo"></li>
-<li><label for="direccion">Direccion:</label>
-<input type="text" value="{{datos[2]}}" id="direccion"></li>
-<li><label for="municipio">Municipio:</label>
-<input type="text" value="{{datos[3]}}" id="municipio"></li>
-<li><label for="provincia">Provincia:</label>
-<input type="text" value="{{datos[4]}}" id="provincia"></li>
-<li><label for="zona">Zona:</label>
-<input type="text" value="{{datos[5]}}" id="zona"></li>
-<li><label for="aporte">Aporte:</label>
-<input type="text" value="{{datos[6]}}RD$/{{datos[7]}}" id="aporte"></li>
-</ul>
+<legend><h3>INFORMACION DE LA PARADA</h3></legend>     
+<li>
+<label for="parada">Nombre:</label>
+<input type="text" value="{{datos[1]}}" id="parada">
+</li>
+<li>
+<label for="direccion">Direccion:</label>
+<input type="text" value="{{datos[2]}}" id="direccion">
+</li>
+<li>
+<label for="municipio">Municipio:</label>
+<input type="text" value="{{datos[3]}}" id="municipio">
+</li>
+<li>
+<label for="provincia">Provincia:</label>
+<input type="text" value="{{datos[4]}}" id="provincia">
+</li>
+<li>
+<label for="zona">Zona:</label>
+<input type="text" value="{{datos[5]}}" id="zona">
+</li>
+<li>
+<label for="aporte">Aporte:</label>
+<input type="text" value="{{datos[6]}}RD$/{{datos[7]}}" id="aporte">
+</li>
 {%endfor%}
-</div>
-
-<div class="head-contenido2">
-<ul>
-<li><label for="press">Presidente:</label>
-<input type="text" value="{{cabecera[3]}}" id="press"></li>
-<li><label for="veedor">Pte. Federacion:</label>
-<input type="text" value="xxxxxxx" id="veedor"></li>
-<li><label for="miemb">Miembros:</label>
-<input type="text" value="{{cabecera[2]}}" id="miemb"></li>
-<li><label for="cuota">cuota:</label>
-<input type="text" value="{{cabecera[0]}}" id="cuota"></li>
-<li><label for="cuota">pago:</label>
-<input type="text" value="{{cabecera[1]}}" id="pago"></li>
+<li>
+<label for="press">Pte. Parada:</label>
+<input type="text" value="{{cabecera[3]}}" id="press">
+</li>
+<li>
+<label for="veedor">Pte. Federacion:</label>
+<input type="text" value="xxxxxxx" id="veedor">
+</li>
+<li>
+<label for="miemb">Miembros:</label>
+<input type="text" value="{{cabecera[2]}}" id="miemb">
+</li>
 </ul>
-</div>
-</div>
-</div>
+</fieldset> 
 </section> 
 <section id="listado">
  <div class="info"> 
