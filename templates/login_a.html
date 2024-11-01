@@ -1,33 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>administracion</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
-    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet">    
-</head>
-<body>
-    <div class="center">
-		<div align="center" class="border">
-			<div class="header">
-				<h1 class="word">Administrador</h1>
-                </div>
-			    <h2 class="word">
-				<form action="{{url_for('login_a')}}" method="post">
-					{% with messages = get_flashed_messages()%}
-					{% if messages%}
-					  {% for message in messages%}
-					  <div class="msg">{{message}}</div>
-					  {%endfor%}
-					  {%endif%}
-					  {%endwith%}
-                    <input id="parada" name="parada" type="text" value="{{parada}}" class="input-contenedor" /></br></br>
-					<input id="cedula" name="cedula" type="text" placeholder="Numero de cedula del administrador" class="input-contenedor"/></br></br>
-					<input id="password" name="password" type="password" placeholder="Entre su Password" class="input-contenedor"/></br></br></br>
-					<input type="submit" class="btn" value="Ingresar">
-				</form>
-		</div>
-    </div>
-</body>
-</html>
+{% extends "layout.html" %}
+{% block title %}administracion{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+{{ super() }}
+<fieldset class="login">           
+	<form action="{{url_for('login_a')}}" method="post">
+	<ol>
+	<legend><h1>Administrador</h1></legend> 	
+	<li>	
+	<div class="msg">{{message}}</div>
+	</li>
+	<li>	
+	<label for="parada">Parada</label>			
+	<input id="parada" name="parada" type="text" value="{{parada}}"/>
+	</li>
+	<li>
+	<label for="cedula">Cedula</label>
+	<input id="cedula" name="cedula" type="text" placeholder="Entre su cedula"/>		
+	</li>
+	<li>
+	<label for="password">Contraseña</label>
+	<input id="password" name="password" type="password" placeholder="Entre su Password"/>
+	</li>
+	<input type="submit" class="btn" value="Ingresar">
+	</ol>	
+	</form>
+</fieldset>
+{% endblock %}

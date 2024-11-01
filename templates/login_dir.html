@@ -1,25 +1,31 @@
- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>digitacion</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
-    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet">     
-</head>
-<body>
-    <div class="center">
-		<div align="center" class="border">
-			<div class="header">
-				<h1 class="word">Digitadores</h1>
-                </div>
-			    <h2 class="word">
-				<form action="{{url_for('login_dir')}}" method="post">
-					<input id="nombre" name="username" type="text" placeholder="nombre del digitador" class="input-contenedor"/></br></br>
-					<input id="password" name="password" type="password" placeholder="Entre su Password" class="input-contenedor"/></br></br></br>
-					<input type="submit" class="btn" value="Ingresar">
-				</form>
-		</div>
-    </div>
-</body>
-</html>
+{% extends "layout.html" %}
+{% block title %}administracion{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+{{ super() }}
+<fieldset class="login">           
+	<form action="{{url_for('login_dir')}}" method="post">
+	<ol>
+	<legend><h1>Digitador(a)</h1></legend> 	
+	<li>	
+	<div class="msg">{{message}}</div>
+	</li>
+	<li>
+	<label for="username">Nombre</label>
+	<input id="username" name="username" type="text" placeholder="Coloque su nombre"/>		
+	</li>
+	<li>
+	<label for="cedula">Cedula</label>
+	<input id="cedula" name="cedula" type="text" placeholder="Entre su cedula"/>		
+	</li>
+	<li>
+	<label for="password">Contraseña</label>
+	<input id="password" name="password" type="password" placeholder="Entre su Password"/>
+	</li>
+		<input type="submit" class="btn" value="Ingresar">
+	</ol>	
+	</form>
+</fieldset>
+{% endblock %}

@@ -197,27 +197,7 @@ input{
         color: #fff;
     } 
 
-.campo_item{
-    width: 40px;
-}
 
-.campo_nombre{
-    width: 200px;
-}
-
-.campo_cedula{
-    width: 60px;
-}
-
-.campo_id{
-    width: 90px;
-}
-
-.word{
-    color: #FFFFFF;
-    font-style: oblique;
-    font-weight: bold;
-}
 
 .input-contenedor h1{
     text-align: center;
@@ -325,15 +305,7 @@ input[type="password"]{
     border: none;
     }
     
-    .pago input{
-    font-size:12px;
-    background: yellow;
-    border:solid 1px Green;
-    border-radius: 5px;
-    float: right;
-    margin-right: 40px;
-    width: 150px;
-    }
+
     
     .pago  ol li{
     line-height: 25px;
@@ -348,7 +320,45 @@ input[type="password"]{
     outline: 1px solid red;
     }
 
+    .pago select{
+        font-size:12px;
+        background: yellow;
+        border:solid 1px Green;
+        border-radius: 5px;
+        float: right;
+        margin-right: 40px;
 
+        width: 150px;
+      }
+      .pago select option{
+        background:black;
+        color:red;
+      }
+      .pago select option:disabled{
+        background: blue;
+      }
+
+      .pago input{
+        font-size:12px;
+        background: yellow;
+        border:solid 1px Green;
+        border-radius: 5px;
+        float: right;
+        margin-right: 40px;
+
+        width: 150px;
+        }
+
+    .pago button{
+        font-size:12px;
+        background: yellow;
+        border:solid 1px Green;
+        width: 150px;
+        height: 25px;
+        margin-left: 60px;
+
+        width: 150px;
+        }
 
     .socios option {
 background-color: #ddd;
@@ -362,36 +372,64 @@ color: black;
         width:auto;
         }
 
-       .pago select{
+
+
+    
+    .encabezado{
+        margin:auto;
+        background-color: #000000;
+        color: white;
+        font-size: 14px;
+        padding: 30px;
+        width: 400px;
+        border:solid 5px  LightSteelBlue;
+        overflow: hidden;
+    }        
+    .encabezado input{
+        font-size:14px;
+        color: white;
+        width:200px;
+        }
+        
+        .encabezado ul li{
+            line-height: 25px;
+            list-style: none;
+            padding: 4px;
+            }
+
+
+        .login{
+            margin:auto;
+            background-color: #000000;
+            color: white;
+            font-size: 12px;
+            padding: 30px;
+            width: 400px;
+            border:solid 10px LightSteelBlue;
+            overflow: hidden;
+            margin-bottom: 10px;
+            }
+
+            .login  ol li{
+                line-height: 25px;
+                list-style: none;
+                padding: 4px;
+                }
+
+
+            .login input{
             font-size:12px;
             background: yellow;
             border:solid 1px Green;
             border-radius: 5px;
             float: right;
-            margin-right: 40px;
-
-            width: 150px;
-          }
-          .pago select option{
-            background:black;
-            color:red;
-          }
-          .pago select option:disabled{
-            background: blue;
-          }
-
-          .pago input{
-            font-size:12px;
-            background: yellow;
-            border:solid 1px Green;
-            border-radius: 5px;
-            float: right;
+            width: auto;
             margin-right: 40px;
 
             width: 150px;
             }
 
-        .pago button{
+        .login button{
             font-size:12px;
             background: yellow;
             border:solid 1px Green;
@@ -400,21 +438,25 @@ color: black;
             margin-left: 60px;
 
             width: 150px;
-            }
+            } 
 
-          
-            .encabezado{
-                margin:auto;
-                background-color: #000000;
-                color: white;
-                font-size: 14px;
-                padding: 30px;
-                width: 400px;
-                border:solid 5px  LightSteelBlue;
-                overflow: hidden;
-            }        
-            .encabezado input{
-                font-size:14px;
-                color: white;
-                width:auto;
-                }
+        .publicidad_u{
+           height: 80px;
+           width: 400px;
+           background: #0217ff;
+           color: white;
+           margin: auto;
+           border-radius: 10px;
+           margin-bottom: 10px;
+        }
+
+        .publicidad_d{
+            height: 80px;
+            width: 400px;
+            background:red;
+            color: white;
+            margin: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+         }
+            

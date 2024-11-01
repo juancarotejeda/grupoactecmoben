@@ -117,6 +117,7 @@ def login_dir():
   account=[]
   if 'username' in request.form and 'password' in request.form:
         nombre = request.form['username']
+        cedula = request.form['cedula']
         password = request.form['password']
         cur = connection.cursor()
         account=funciones.verif_dig(cur,nombre,password)
@@ -124,7 +125,7 @@ def login_dir():
             return render_template('digitadores.html')
         else:
             msg = 'Incorrecto nombre de usuario / password !'          
-            return render_template("login_dir.html",msg)                 
+            return render_template("login_dir.html",msg=msg)                 
 
 
 @app.route('/logout')

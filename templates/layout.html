@@ -4,7 +4,7 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% block head %}
-<title>micro_estacion</title> 
+<title>Moto-estaciones</title> 
 <head>  
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
 <link href="{{url_for('static',filename='css/estilo.css')}}" rel="stylesheet"> 
@@ -32,11 +32,15 @@
    <a href="{{url_for('digitadores')}}">DIGITADORES</a>
    <a href="{{url_for('contacto')}}">CONTACTAR</a>
    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-   <i class="fa fa-bars"></i>
-   </a>
+   <i class="fa fa-bars"></i></a>
  </div>
 </header>
+<fieldset class="publicidad_u">PUBLICIDAD</fieldset>
 
 </body>
+
 {% endblock %}
+<fieldset class="publicidad_d">PUBLICIDAD</fieldset>
+  <a href="{{ url_for('logout') }}" class="btn"><button>Salir</button></a><br>  
+  &copy; Copyright 2024 by <a href="http://www.cessrl.blogspot.com">La Administradora</a>.
 </html>
