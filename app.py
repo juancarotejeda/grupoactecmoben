@@ -27,7 +27,6 @@ connection =mysql.connector.connect(
 @app.route("/")
 def login():  
     msg = '' 
-    flash(msg) 
     cur = connection.cursor() 
     resultado=funciones.listado_paradas(cur)
     paradas=[]
