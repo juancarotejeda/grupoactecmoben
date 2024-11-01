@@ -6,27 +6,29 @@
 {% endblock %}
 {% block content %}
 {{ super() }}
-<section id="cuotas" class="head-info-adm">
-<form action="/data_cuotas" method="POST">    
-<div class="head-info-adm-up">
-   <h1>LISTA DE PAGOS</h1>
-</div>
-<div class="head-info-adm-down"> 
+<section id="cuotas" >
+<form action="/data_cuotas" method="POST">     
+<fieldset class="login">
+   <ol>
+   <legend><h1>LISTA DE PAGOS</h1></legend>
+   <li>
    <label for="paradas">PARADA:</label>             
    <input type="text" name="parada" value="{{parada}}" id="paradas">
-                        
+   </li>
+   <li>                     
    <label for="fecha">FECHA:</label>
    <input type="text" name="time" value="{{fecha}}" id="fecha">
-  
+   </li>
+   <li>
    <label for="miembro">NUMERO DE MIEMBROS:</label>
    <input type="text" name="numero" value="{{ cabecera[2]}}" id="miembro">         
-  
+   </li>
+   <li>
    <label for="valor">CUOTA:</label>
    <input type="text" name="valor" value="{{ cabecera[0]}}" id="valor">
-</div>    
-</section>
-<section id="tabla_cuotas">
-  
+   </li>
+   <li> 
+ <legend>Tabla de pagos</legend>  
 <table>
    <tr></tr>
       <th>ITEM</th>
@@ -40,21 +42,24 @@
          <input  type="text" class="campo_item" name="item" value="{{ user[0]}}">
       </td>
       <td>
-         <select name="estado" id="pagar">
-            <option value="no_pago">no_pago</option>
-            <option value="pago">pago</option>
-         </select>
+      <select name="estado" id="pagar">
+      <option value="no_pago">no_pago</option>
+      <option value="pago">pago</option>
+      </select>
       </td>
       <td>
-         <input type="text" class="campo_nombre" name="nombre" value="{{ user[1]}}"  placeholder=" ">
+      <input type="text" class="campo_nombre" name="nombre" value="{{ user[1]}}">
       </td>
       <td>
-         <input type="text" class="campo_id" name="documento" value="{{ user[2]}}" id="">
+      <input type="text" class="campo_id" name="documento" value="{{ user[2]}}" id="">
       </td>
    </tr>
    {%endfor%}
 </table>
 <button type="submit">ENVIAR</button>
+</li>
+</ol>
+</fieldset>
 </form>
 </section>
 
