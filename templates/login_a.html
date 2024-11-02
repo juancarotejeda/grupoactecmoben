@@ -1,8 +1,4 @@
 {% extends "layout.html" %}
-{% block title %}administracion{% endblock %}
-{% block head %}
-  {{ super() }}
-{% endblock %}
 {% block content %}
 {{ super() }}
 <fieldset class="login">           
@@ -10,7 +6,7 @@
 	<ol>
 	<legend><h1>Administrador</h1></legend> 	
 	<li>	
-	<div class="msg">{{message}}</div>
+	<div class="msg">{{msg}}</div>
 	</li>
 	<li>	
 	<label for="parada">Parada</label>			

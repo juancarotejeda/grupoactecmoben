@@ -3,16 +3,13 @@
 <meta charset="utf-8">
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{% block head %}
+
 <title>Moto-estaciones</title> 
 <head>  
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
 <link href="/static/css/estilo.css" rel="stylesheet"> 
-</head>
-
-{% endblock %}   
-{% block content %} 
-<body>  
+</head>  
+  
 <header class="headers">  
  <div class="logo">
    <img src="/static/images/logo-motoben.jpg" alt="logo de la Adm.">
@@ -29,6 +26,8 @@
 <fieldset class="publicidad_u">
 <img src="/static/images/publicidad2.jpg" alt="publicidad de la Adm." width="400" height="75">
 </fieldset>
+{% block content %}
+<body>
 </body>
 {% endblock %}
 <fieldset class="publicidad_d"> 
