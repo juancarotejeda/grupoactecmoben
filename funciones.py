@@ -14,7 +14,7 @@ def listado_paradas(cur):
     return db_paradas
 
 def info_parada(cur,parada):
-    cur.execute(f"SELECT codigo,nombre,direccion,municipio,provincia,zona,cuota,pago FROM  tabla_index  WHERE nombre='{parada}'" )
+    cur.execute(f"SELECT codigo,nombre,direccion,municipio,provincia,zona,cuota,pago,banco,num_cuenta FROM  tabla_index  WHERE nombre='{parada}'" )
     infos=cur.fetchall()     
     return infos
 
@@ -211,5 +211,24 @@ def report_abono(cur,parada,fecha,abono_a,cantidad_a):
       balance_prestamos=float(prestamo) - float(abono_persona)                
       cur.execute(f"UPDATE {parada}_abonos SET balance_prestamo = {balance_prestamos} WHERE abono_a = '{abono_a}' AND fecha = '{fecha}' ")
       cur.execute(f"UPDATE tabla_index SET abonos={n_abonos} WHERE nombre='{parada}'")
-      return   
-            
+      return 
+  
+def actualizar_pp(cur,parada,direccion,municipio,provincia,zona,cuota,pago,banco,num_cuenta):
+     cur.execute(f"UPDATE tabla_index SET direccion='{direccion}',municipio='{municipio}',provincia='{provincia}',zona='{zona}',cuota='{cuota}',pago='{pago}',banco='{banco}', num_cuenta='{num_cuenta}' WHERE nombre='{parada}'")
+     return 
+ 
+def insert_pp(cur,nombre,direccion,municipio,provincia,zona,cuota,pago,banco,num_cuenta): 
+    cur.execute(f"INSERT INTO tabla_index(nombre,direccion,municipio,provincia,zona,cuota,pago,banco,num_cuenta) VALUES('{nombre}','{direccion}','{municipio}','{provincia}','{zona}','{cuota}','{pago}','{banco}','{num_cuenta}') ")
+    cur.execute(f'CREATE TABLE IF NOT EXISTS {nombre} (nombre VARCHAR(150)  NULL, cedula VARCHAR(50)  NULL, telefono VARCHAR(50)  NULL, funcion VARCHAR(50)  NULL)')
+    return
+
+
+
+
+
+def insertar_Asociado(cur,parada,nombre,cedula,telefono,funcion):
+     cur.execute(f"INSERT INTO {parada}( nombre,cedula,telefono,funcion) VALUES('{nombre}','{cedula}','{telefono}','{funcion}')")
+     return 
+
+def actualizar_asoc(cur,parada,nombre,cedula,telefono,funcion):
+     cur.execuete(F"UPDATE {parada} SET nombre='{nombre}',cedula='{cedula}',telefono='{telefono}',funcion='{funcion}' ") 

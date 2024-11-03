@@ -81,6 +81,7 @@ def administrador():
 
 @app.route('/digitadores') 
 def digitadores():
+
     return render_template('login_dir.html')
 
 @app.route('/contacto') 
@@ -120,8 +121,13 @@ def login_dir():
         password = request.form['password']
         cur = connection.cursor()
         account=funciones.verif_dig(cur,nombre,password)
-        if account == True:        
-            return render_template('digitadores.html')
+        if account == True:
+            paradas=[]  
+            resultado=funciones.listado_paradas(cur)
+            for paradax in resultado:
+              paradas+=paradax  
+            cur.close()       
+            return render_template('digitadores.html',paradas=paradas)
         else:
             msg = 'Incorrecto nombre de usuario / password !'          
             return render_template("login_dir.html",msg=msg)                 
@@ -225,21 +231,71 @@ def data_abonos():
        return redirect(url_for('data_confirmacion')) 
 
 
-@app.route('/nueva_p') 
-def nueva_p(): 
-    return render_template('direccion.html')
+@app.route('/crear_nueva_p',methods=['GUEST','POST']) 
+def crear_nueva_p():
+    if request.method == 'POST':
+       cur = connection.cursor()
+       parada=request.form['nombre']
+       direccion=request.form['direccion']
+       municipio=request.form['municipio']
+       provincia=request.form['provincia']
+       zona=request.form['zona']
+       cuota=request.form['cuota']
+       pago=request.form['pago']
+       banco=request.form['banco']
+       num_cuenta=request.form['cuenta']
+       funciones.insert_pp(cur,parada,direccion,municipio,provincia,zona,cuota,pago,banco,num_cuenta)
+       return render_template('digitadores.html')
+
+
+
                                                    
-@app.route('/editar_p') 
-def editar_p(): 
-    return render_template('direccion.html')                           
+@app.route('/edit_parada',methods=['GUEST','POST']) 
+def edit_parada(): 
+    if request.method == 'POST':               
+       parada=request.form['e-parada']
+       cur = connection.cursor()
+       data=funciones.info_parada(cur,parada)
+       cur.close()      
+       return render_template('digitadores.html',data=data,parada=parada) 
+ 
+@app.route('/actualizar_p',methods=['GUEST','POST']) 
+def actualizar_p():
+    if request.method == 'POST':
+       cur = connection.cursor()
+       parada=request.form['parada']
+       direccion=request.form['direccion']
+       municipio=request.form['municipio']
+       provincia=request.form['provincia']
+       zona=request.form['zona']
+       cuota=request.form['cuota']
+       pago=request.form['pago']
+       banco=request.form['banco']
+       num_cuenta=request.form['num_cuenta']
+       funciones.actualizar_pp(cur,parada,direccion,municipio,provincia,zona,cuota,pago,banco,num_cuenta)   
+       cur.close()
+       return render_template('digitadores.html')                      
                            
 @app.route('/n_miembro') 
 def n_miembro(): 
+    if request.method == 'POST':
+       cur = connection.cursor()
+       parada=request.form['parada']
+       nombre=request.form['nombre']
+       cedula=request.form['cedula']
+       telefono=request.form['telefono']
+       funcion=request.form['funcion']
+       cur.close()
+       funciones.insertar_Asociado(cur,parada,nombre,cedula,telefono,funcion)
     return render_template('direccion.html')
                            
                            
 @app.route('/editar_miembro') 
 def editar_miembro(): 
+    if request.method == 'POST':
+       cur = connection.cursor()
+       parada=request.form['parada']
+       list_miembro=funciones.lista_miembros(cur,parada)
     return render_template('direccion.html') 
  
 

@@ -2,12 +2,8 @@
 {% extends "layout.html" %}
 {% block content %}
   {{ super() }}
-
-<section id="n_parada">
-<div class="adm-info">   
-    <div class="adm-body">  
-    <div class="entrar">    
-    <form  > 
+<section id="n_parada">    
+    <form action="/crear_nueva_p" method="POST" > 
             <fieldset class="pago">
             <ol> 
             <li>
@@ -34,13 +30,36 @@
             </li>
             <li>
             <label for="zona">Zona geografica</label>
-            <input id="zona" name="provincia" type="text" required>
+            <select id="zona" name="zona">
+                <optgroup label="">
+                <option selected>Distrito Nacional</option> 
+                <option >Gran Santo Domingo</option>
+                <option >zona Norte</option>
+                <option >zona Sur</option>
+                <option >zona Este</option>
+                </optgroup>
+            </select><br>
+            </li>
+            <li>
+            <label for="cuota">Cuotas</label>
+            <input id="cuota" name="cuota" type="text" required>
+            </li>
+            <li>
+            <label for="pago">Pago</label>
+            <select id="pago" name="pago">
+                <optgroup label="">
+                <option selected>Diario</option> 
+                <option >Semanal</option>
+                <option >Quincenal</option>
+                </optgroup>
+            </select><br>
             </li>                  
             <li>
             <label for="banco">Banco</label>
-            <select id="banco">
+            <select id="banco" name="banco">
                 <optgroup label="">
-                   <option selected>Banrreservas</option>
+                   <option selected>Sin banco</option> 
+                   <option >Banrreservas</option>
                    <option >Banco popular</option>
                    <option>Banco BHD</option>
                 </optgroup>
@@ -53,20 +72,26 @@
             <button type="submit">Crear parada</button>
              </ol>
             </fieldset> 
-        </form>
-        </div>
-        </div>  
-        </div>            
+        </form>           
         </section>
+
         <section id="n_asociado">
         <form   > 
         <fieldset class="pago">
         <ol> 
         <li>
-        <LEgend><h1>AGREGAR NUEVO ASOCIADO</h1></LEgend> 
+        <legend><h1>AGREGAR NUEVO ASOCIADO</h1></legend> 
         </li>
         <li>
-        <legend>Datos personales</legend>
+            <label for="E-parada">Elegir parada</label>
+            <select id="E-parada"> 
+                   <optgroup label="Funcion">
+                   <option selected></option>
+                   {%for parada in paradas%}
+                   <option value = {{parada}} >{{parada}}</option>
+                   {%endfor%}
+                   </optgroup>
+             </select><br>
         </li> 
         <li>
         <label for="nombre">Nombre completo</label>
@@ -84,133 +109,166 @@
         <label for="provincia">Funcion</label>
         <input id="provincia" name="provincia" type="text" required>
         </li>
-        <button type="submit">Crear parada</button>
+        <button type="submit">Agregar asociado</button>
         </ol>
         </fieldset> 
         </form>
         </section>
+
         <section id="editar_pa">
-        <form   > 
             <fieldset class="pago">
             <ol> 
             <li>
             <LEgend><h1>EDITAR PARADA</h1></LEgend> 
-            </li>
-            <li>
-            <legend>Datos de la parada</legend>
             </li> 
             <li>
-            <label for="nombre">Nombre</label>
-            <input id="nombre" name="nombre" type="text" placeholder="Escribe el nombre de la parada" required autofocus>
+            <form action="/edit_parada" method="POST">        
+            <label for="e-parada">Elegir parada</label>
+            <select id="e-parada" name="e-parada"> 
+                    <option selected></option>
+                    {%for parada in paradas%}
+                    <option value = {{parada}} >{{parada}}</option>
+                    {%endfor%}
+            </select><br>
+            <button type="submit">Aceptar</button><br>
+            </form> 
+            <br><br>    
+            </li> 
+            </ol>
+            -------------------------------------------------------------------------------
+            <form action="actualizar_p" method="POST">
+            {%for dat in data%}
+            <ol>   
+            <li>
+            <legend>Datos de la parada</legend>
+            </li>
+            <li>
+            <label for="parada">Parada</label>
+            <input id="parada" name="parada" type="text" value="{{parada}}">
             </li>
             <li>
             <label for="direccion">Direccion</label>
-            <input id="direccion" name="direccion" type="text" placeholder="direccion" required>
+            <input id="direccion" name="direccion" type="text" value="{{dat[2]}}">
             </li>
             <li>
             <label for="municipio">Municipio/Sector</label>
-            <input id="municipio" name="municipio" type="text" required>
+            <input id="municipio" name="municipio" type="text" value="{{dat[3]}}">
             </li>
             <li>
             <label for="provincia">Provincia</label>
-            <input id="provincia" name="provincia" type="text" required>
+            <input id="provincia" name="provincia" type="text"value="{{dat[4]}}">
             </li>
             <li>
             <label for="zona">Zona geografica</label>
-            <input id="zona" name="provincia" type="text" required>
-            </li>                  
+            <input id="zona" name="zona" type="text"value="{{dat[5]}}">
+            </li> 
+            <li>
+            <label for="cuota">Cuota</label>
+            <input id="cuota" name="cuota" type="text"value="{{dat[6]}}">
+            </li> 
+            <li>
+            <label for="pago">Pago</label>
+                    <input id="pago" name="pago" type="text"value="{{dat[7]}}">
+                    </li>                      
             <li>
             <label for="banco">Banco</label>
-            <select id="banco">
-                <optgroup label="">
-                   <option selected>Banrreservas</option>
-                   <option >Banco popular</option>
-                   <option>Banco BHD</option>
-                </optgroup>
-             </select><br>
+            <input id="banco" name="banco" type="text"value="{{dat[8]}}">
             </li>
             <li>
             <label for="cuenta">Num. de cuenta</label>
-            <input id="cuenta" name="cuenta" type="number" placeholder="Ej. 00166889999" required>
+            <input id="cuenta" name="num_cuenta" type="number" value="{{dat[9]}}">
             </li>
-            <button type="submit">Crear parada</button>
+            <button type="submit">Actualizar parada</button>
              </ol>
-            </fieldset> 
-        </form>
+             {%endfor%}
+            </form>
+            </fieldset>
 </section>
 
 <section id="editar_as">
-    <div class="adm-info">
-        <div class="adm-header"><h1>EDITAR ASOCIADOS</h1></div>
-        <form action=" " method="POST">
-            <fieldset>
-                <legend>Datos de los Socios(as)</legend>
-                <label for="nombre">Nombre y apellidos: </label>
-                <input id="nombre" type="text"><br>
-        
-                <label for="sexo">Sexo: </label>
-                <select id="sexo">
-                    <!--Etiqueta option-->
-                    <option value="value1" selected>Hombre</option> 
-                    <option value="value2" >Mujer</option>
-                </select><br><br>
-        
-                <label>Edad: </label>
-                <input type="checkbox" value="20-39"> 20-39
-                <input type="checkbox" value="40-59"> 40-59
-                <input type="checkbox" value="60-79"> 60-79<br><br>
-        
-                <label>Educacion: </label>
-                <input type="checkbox" value="ninguna"> Ninguna
-                <input type="checkbox" value="20-39"> Primaria
-                <input type="checkbox" value="40-59"> Secundaria
-                <input type="checkbox" value="60-79"> Universitaria<br><br>        
-        
-                <label for="email">Cedula: </label>
-                <input id="email" type="email"><br><br>
-                <label for="email">Telefono: </label>
-                <input id="email" type="email"><br><br>
-                <label for="email">Email: </label>
-                <input id="email" type="email"><br><br>
-        
-                <label for="estudios">Funcion: </label>
-                <select id="estudios">
-                   <optgroup label="Funcion">
-                      <option selected>Chofer</option>
-                      <option >Secretario(a)</option>
-                      <option>Presidente</option>
+    <form action="n_miembro" method="POST" > 
+        <fieldset class="pago">
+        <ol> 
+        <li>
+        <legend><h1>AGREGAR NUEVO ASOCIADO</h1></legend> 
+        </li>
+        <li>
+            <label for="parada">Elegir parada</label>
+            <select id="parada" name="parada"> 
+                   <optgroup label="parada">
+                   <option selected></option>
+                   {%for parada in paradas%}
+                   <option value = {{parada}} >{{parada}}</option>
+                   {%endfor%}
                    </optgroup>
-                </select><br><br>
-        
-              <label for="navegador">Elige tu navegador favorito: </label>
-              <input id="navegador" list="browsers">
-                <datalist id="browsers">
-                    <option value="Chrome">
-                    <option value="Firefox">
-                    <option value="Internet Explorer">
-                    <option value="Opera">
-                    <option value="Safari">
-                    <option value="Microsoft Edge">
-                </datalist><br><br>
-        
-                <label for="mensaje">Escribe tu mensaje: </label>
-                <textarea rows="10" cols="50" placeholder="Mensaje" id="mensaje"></textarea>
-            </fieldset>  
-            <input type="submit" value="Enviar">
-        </form>    
-        <h2><a href="{{ url_for('logout') }}" class="btn">Salir</a></h2>  
-    </div>
+             </select><br>
+        </li> 
+        <li>
+        <label for="nombre">Nombre completo</label>
+        <input id="nombre" name="nombre" type="text" placeholder="Escribe el nombre de la parada" required autofocus>
+        </li>
+        <li>
+        <label for="direccion">Cedula</label>
+        <input id="direccion" name="direccion" type="text" placeholder="direccion" required>
+        </li>
+        <li>
+        <label for="municipio">Telefono</label>
+        <input id="municipio" name="municipio" type="text" required>
+        </li>
+        <li>
+        <label for="provincia">Funcion</label>
+        <input id="provincia" name="provincia" type="text" required>
+        </li>
+        <button type="submit">Agregar asociado</button>
+        </ol>
+        </fieldset> 
+        </form>
 </section>
-<section id="suspender_pa">
-    <div class="adm-info">
-        <div class="adm-header"><h1>SUSPENDER PARADA</h1></div>
-        <h2><a href="{{ url_for('logout') }}" class="btn">Salir</a></h2>  
-    </div>
-</section>
-<section id="suspender_as">
-    <div class="adm-info">
-        <div class="adm-header"><h1>SUSPENDER ASOCIADOS</h1></div>
-        <h2><a href="{{ url_for('logout') }}" class="btn">Salir</a></h2>   
-    </div>
+<section id="editar_as">
+
+        <fieldset class="pago">
+        <form action="/n_miembro" method="POST">
+        <ol> 
+        <li>
+        <legend><h1>Editar Asociados</h1></legend> 
+        </li>    
+        <li>
+        <label for="parada">Elegir parada</label>
+        <select id="parada" name="parada"> 
+                <optgroup label="parada">
+                <option selected></option>
+                {%for parada in paradas%}
+                <option value = {{parada}} >{{parada}}</option>
+                {%endfor%}
+                </optgroup>
+        </select><br>
+        <button type="submit">Editar asociado</button>    
+        </li> 
+        </ol> 
+        </form>
+        -------------------------------------------------------------------------------
+        <br><br>
+        <form action="edit_miembros">
+        <ol>   
+        <li>
+        <label for="nombre">Nombre completo</label>
+        <input id="nombre" name="nombre" type="text" placeholder="Escribe el nombre de la parada" required autofocus>
+        </li>
+        <li>
+        <label for="direccion">Cedula</label>
+        <input id="direccion" name="direccion" type="text" placeholder="direccion" required>
+        </li>
+        <li>
+        <label for="municipio">Telefono</label>
+        <input id="municipio" name="municipio" type="text" required>
+        </li>
+        <li>
+        <label for="provincia">Funcion</label>
+        <input id="provincia" name="provincia" type="text" required>
+        </li>
+        <button type="submit">Agregar asociado</button>
+        </ol>
+        </fieldset> 
+        </form>
 </section>
 {% endblock %}

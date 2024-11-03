@@ -62,15 +62,12 @@
 <section id="bancos">
    <form action="data_bancos" method="post"> 
    {%for datos in informacion %}   
-      <input type="hidden" name="parada" value="{{datos[2]}}" id="parada">  
-   {%endfor%}
+   <input type="hidden" name="parada" value="{{datos[2]}}" id="parada">   
    <fieldset class="pago">
    <ol>
    <legend><h1>REPORTE BANCARIO</h1></legend>     
    <li>   
-      {%for datos in informacion %}
-      <h4>PARADA:{{datos[2]}}</h4>
-      {%endfor%}
+   <h4>PARADA:{{datos[2]}}</h4>
    </li>   
 
    <li>    
@@ -81,22 +78,12 @@
       <input type="text" name="time" value="{{fecha}}" id="fecha">
    </li>
    <li>                   
-      <label for="descripcion">BANCO:</label>
-      <select name="nom_banco" id="descripcion">
-         <option value="Banrreservas">Banrreservas</option>
-      </select>
+      <label for="banco">BANCO:</label>
+      <input type="text" name="n_cuenta" value="{{datos[8]}}" id="banco">
    </li>
-   <li> 
-      <label for="cuenta">TIPO DE CUENTA:</label>
-      <select name="t_cuenta" id="cuenta">
-         <option value="Sin cuentas">Sin cuentas</option>
-         <option value="Cuenta de Ahorro">Cuenta de Ahorro</option>
-         <option value="Cuenta Corriente">Cuenta Corriente</option>      
-      </select>
-   </li> 
    <li>     
       <label for="numero">CUENTA #:</label>
-      <input type="text" name="n_cuenta" value="0000000000" id="numero">
+      <input type="text" name="n_cuenta" value="{{datos[9]}}" id="numero">
    </li> 
    <li>    
       <label for="balance">BALANCE:</label>
@@ -106,6 +93,7 @@
       <button type="submit">ENVIAR</button>
    </li> 
    </ol>   
+   {%endfor%}
    </form>     
 </fieldset>
 </section>
