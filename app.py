@@ -244,7 +244,7 @@ def crear_nueva_p():
        pago=request.form['pago']
        banco=request.form['banco']
        num_cuenta=request.form['cuenta']
-       funciones.insert_pp(cur,parada,direccion,municipio,provincia,zona,cuota,pago,banco,num_cuenta)
+       funciones.generar_pp(cur,parada,direccion,municipio,provincia,zona,cuota,pago,banco,num_cuenta)
        return render_template('digitadores.html')
 
 
