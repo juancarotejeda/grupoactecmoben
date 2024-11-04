@@ -23,7 +23,6 @@ connection =mysql.connector.connect(
     autocommit=True,
 
 )
-
 @app.route("/")
 def login():  
     msg = '' 
@@ -38,16 +37,14 @@ def login():
 @app.route("/new_data", methods=["POST"])
 def new_data(): 
     msg = ''
-    global parada,cedula,password 
+    global parada,cedula,password     
     parada = request.form['parada']
     cedula = request.form['cedula']
-    password = request.form['clave']
-    
-    cur = connection.cursor()
-    
+    password = request.form['clave']    
+    cur = connection.cursor()    
     estacion=funciones.check_parada(cur,parada)
     if estacion == False:
-        msg = 'Esta parada esta bloqueada!' 
+        msg = 'Esta parada esta inoperante!' 
         flash(msg)          
         return redirect(url_for('login'))
     
@@ -67,14 +64,14 @@ def new_data():
             cur.close()
             return render_template('info.html',informacion=informacion,cabecera=cabecera,fecha=fecha,miembros=miembros,diario=diario,cuotas_hist=cuotas_hist) 
         else:
-            msg = 'Incorrecta contraseña de la parada!' 
-            flash(msg)          
-            return redirect(url_for('login'))
+            msg = 'Incorrecta contraseña de la parada!'          
+            flash(msg)           
+            return redirect(url_for('login')) 
     else:
       msg = 'cedula Incorrecta para esta parada!'
       flash(msg)           
       return redirect(url_for('login'))    
-        
+
 @app.route('/administrador') 
 def administrador():
     return render_template('login_a.html',parada=parada)
@@ -276,18 +273,18 @@ def actualizar_p():
        cur.close()
        return render_template('digitadores.html')                      
                            
-@app.route('/n_miembro') 
+@app.route('/n_miembro',methods=['GUEST','POST']) 
 def n_miembro(): 
     if request.method == 'POST':
        cur = connection.cursor()
-       parada=request.form['parada']
+       parada=request.form['E-parada']
        nombre=request.form['nombre']
        cedula=request.form['cedula']
        telefono=request.form['telefono']
        funcion=request.form['funcion']
-       cur.close()
        funciones.insertar_Asociado(cur,parada,nombre,cedula,telefono,funcion)
-    return render_template('direccion.html')
+       cur.close()
+       return render_template('direccion.html')
                            
                            
 @app.route('/editar_miembro') 

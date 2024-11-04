@@ -7,7 +7,7 @@
             <fieldset class="pago">
             <ol> 
             <li>
-            <LEgend>CREAR NUEVA PARADA</LEgend> 
+            <LEgend><h1>CREAR PARADA</h1></LEgend> 
             </li>
             <li>
             <legend>Datos de la parada</legend>
@@ -69,23 +69,21 @@
             <label for="cuenta">Num. de cuenta</label>
             <input id="cuenta" name="cuenta" type="number" placeholder="Ej. 00166889999" required>
             </li>
-            <button type="submit">Crear parada</button>
+            <button type="submit"><h1>CREAR</h1></button>
              </ol>
             </fieldset> 
         </form>           
         </section>
 
-        <section id="n_asociado">
-        <form   > 
+        <section id="n_asociado"> 
         <fieldset class="pago">
-        <ol> 
-        <li>
-        <legend><h1>AGREGAR NUEVO ASOCIADO</h1></legend> 
-        </li>
+        <form action="/n_miembro" method="POST" >   
+        <ol>
+        <legend><h1>AGREGAR  ASOCIADO</h1></legend>     
         <li>
             <label for="E-parada">Elegir parada</label>
-            <select id="E-parada"> 
-                   <optgroup label="Funcion">
+            <select id="E-parada" name="E-parada" required> 
+                   <optgroup label="parada">
                    <option selected></option>
                    {%for parada in paradas%}
                    <option value = {{parada}} >{{parada}}</option>
@@ -95,40 +93,40 @@
         </li> 
         <li>
         <label for="nombre">Nombre completo</label>
-        <input id="nombre" name="nombre" type="text" placeholder="Escribe el nombre de la parada" required autofocus>
+        <input id="nombre" name="nombre" type="text" required autofocus>
         </li>
         <li>
-        <label for="direccion">Cedula</label>
-        <input id="direccion" name="direccion" type="text" placeholder="direccion" required>
+        <label for="cedula">Cedula</label>
+        <input id="cedula" name="cedula" type="text"  required>
         </li>
         <li>
-        <label for="municipio">Telefono</label>
-        <input id="municipio" name="municipio" type="text" required>
+        <label for="telefono">Telefono</label>
+        <input id="telefono" name="telefono" type="text" required>
         </li>
         <li>
-        <label for="provincia">Funcion</label>
-        <input id="provincia" name="provincia" type="text" required>
+        <label for="funcion">Funcion</label>
+        <input id="funcion" name="funcion" type="text" required>
         </li>
         <button type="submit">Agregar asociado</button>
         </ol>
-        </fieldset> 
         </form>
+        </fieldset> 
         </section>
 
         <section id="editar_pa">
             <fieldset class="pago">
+            <form action="/edit_parada" method="POST">
+            <LEgend><h1>EDITAR PARADA</h1></LEgend>          
             <ol> 
-            <li>
-            <LEgend><h1>EDITAR PARADA</h1></LEgend> 
-            </li> 
-            <li>
-            <form action="/edit_parada" method="POST">        
+            <li>                   
             <label for="e-parada">Elegir parada</label>
-            <select id="e-parada" name="e-parada"> 
+            <select id="e-parada" name="e-parada">
+                    <optgroup label="parada"> 
                     <option selected></option>
                     {%for parada in paradas%}
                     <option value = {{parada}} >{{parada}}</option>
                     {%endfor%}
+                    </optgroup>
             </select><br>
             <button type="submit">Aceptar</button><br>
             </form> 
@@ -178,63 +176,20 @@
             <label for="cuenta">Num. de cuenta</label>
             <input id="cuenta" name="num_cuenta" type="number" value="{{dat[9]}}">
             </li>
-            <button type="submit">Actualizar parada</button>
+            <button type="submit">ACTUALIZAR</button>
              </ol>
              {%endfor%}
             </form>
             </fieldset>
 </section>
-
 <section id="editar_as">
-    <form action="n_miembro" method="POST" > 
         <fieldset class="pago">
-        <ol> 
-        <li>
-        <legend><h1>AGREGAR NUEVO ASOCIADO</h1></legend> 
-        </li>
-        <li>
-            <label for="parada">Elegir parada</label>
-            <select id="parada" name="parada"> 
-                   <optgroup label="parada">
-                   <option selected></option>
-                   {%for parada in paradas%}
-                   <option value = {{parada}} >{{parada}}</option>
-                   {%endfor%}
-                   </optgroup>
-             </select><br>
-        </li> 
-        <li>
-        <label for="nombre">Nombre completo</label>
-        <input id="nombre" name="nombre" type="text" placeholder="Escribe el nombre de la parada" required autofocus>
-        </li>
-        <li>
-        <label for="direccion">Cedula</label>
-        <input id="direccion" name="direccion" type="text" placeholder="direccion" required>
-        </li>
-        <li>
-        <label for="municipio">Telefono</label>
-        <input id="municipio" name="municipio" type="text" required>
-        </li>
-        <li>
-        <label for="provincia">Funcion</label>
-        <input id="provincia" name="provincia" type="text" required>
-        </li>
-        <button type="submit">Agregar asociado</button>
-        </ol>
-        </fieldset> 
-        </form>
-</section>
-<section id="editar_as">
-
-        <fieldset class="pago">
-        <form action="/n_miembro" method="POST">
-        <ol> 
-        <li>
-        <legend><h1>Editar Asociados</h1></legend> 
-        </li>    
+        <form action="/select_p" method="POST">
+        <legend><h1>EDITAR ASOCIADO</h1></legend>     
+        <ol>     
         <li>
         <label for="parada">Elegir parada</label>
-        <select id="parada" name="parada"> 
+        <select id="parada" name="parada" required> 
                 <optgroup label="parada">
                 <option selected></option>
                 {%for parada in paradas%}
@@ -242,31 +197,51 @@
                 {%endfor%}
                 </optgroup>
         </select><br>
-        <button type="submit">Editar asociado</button>    
+        <button type="submit">SELECCIONAR</button>    
         </li> 
         </ol> 
         </form>
         -------------------------------------------------------------------------------
         <br><br>
+        <form action="/select_miembro" method="POST">
+        <legend><h1>SELECCIONAR ASOCIADO</h1></legend>     
+        <ol>     
+        <li>
+        <label for="miembro">Elegir miembro</label>
+        <select id="miembro" name="miembro" required> 
+                    <optgroup label="Miembros">
+                    <option selected></option>
+                    {%for parada in paradas%}
+                    <option value = {{parada}} >{{parada}}</option>
+                    {%endfor%}
+                    </optgroup>
+        </select><br>
+        <button type="submit">SELECCIONAR</button>    
+        </li> 
+        </ol> 
+        </form>
+        -------------------------------------------------------------------------------
+        <br><br>       
         <form action="edit_miembros">
+            <legend><h1>EDITAR ASOCIADO</h1></legend>     
         <ol>   
         <li>
         <label for="nombre">Nombre completo</label>
-        <input id="nombre" name="nombre" type="text" placeholder="Escribe el nombre de la parada" required autofocus>
+        <input id="nombre" name="nombre" type="text"  required autofocus>
         </li>
         <li>
-        <label for="direccion">Cedula</label>
-        <input id="direccion" name="direccion" type="text" placeholder="direccion" required>
+        <label for="cedula">Cedula</label>
+        <input id="cedula" name="cedula" type="text"  required>
         </li>
         <li>
-        <label for="municipio">Telefono</label>
-        <input id="municipio" name="municipio" type="text" required>
+        <label for="telefono">Telefono</label>
+        <input id="telefono" name="telefono" type="text" required>
         </li>
         <li>
-        <label for="provincia">Funcion</label>
-        <input id="provincia" name="provincia" type="text" required>
+        <label for="funcion">Funcion</label>
+        <input id="funcion" name="funcion" type="text" required>
         </li>
-        <button type="submit">Agregar asociado</button>
+        <button type="submit">EDITAR</button>
         </ol>
         </fieldset> 
         </form>

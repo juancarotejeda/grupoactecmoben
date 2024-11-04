@@ -165,15 +165,15 @@ th, td {
     color: #000000;
   }
 
-select{
+/*select{
     border: 0; 
     background: transparent;    
-}
+}*/
 
-input{
+/*input{
     border: 0; 
     background: transparent; 
-   }
+   }*/
 
 
    .btn button{
@@ -450,13 +450,24 @@ color: black;
         .publicidad_d{
             height: 80px;
             width: 400px;
-            background:red;
+            background:rgb(0, 0, 0);
             color: white;
             margin: auto;
             border-radius: 10px;
             margin-bottom: 10px;
          }
 
+         .publicidad_d2{
+            height: 80px;
+            width: 400px;
+            background:rgb(0, 0, 0);
+            color: white;
+            margin: auto;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 10px;
+            padding-top: 30px;
+         }         
 
          @media(min-width:768px)
          {
@@ -474,12 +485,19 @@ color: black;
             padding: 15px;
         }
 
-        .formulario{
+        /*.formulario{
             background: #8eecff; 
             margin-top: 15px;
             padding: 3px;
-        }
+        }*/
 
+        .formulario{
+
+            margin-top: 30px;
+            border-radius: 2%;
+            min-height: 400px;
+            background: #8eecff; 
+        } 
 
 
          .input-contenedor h1{
@@ -570,10 +588,85 @@ color: black;
         } 
             
    
-        .formulario{
 
-            margin-top: 30px;
-            border-radius: 2%;
-            min-height: 400px;
-            background: #8eecff; 
-        } 
+/*-----------------------------------login prinsipal------------------------*/        
+        .login-pago{
+            margin:auto;
+            background-color: #000000;
+            color: white;
+            font-size: 12px;
+            padding: 30px;
+            width: 400px;
+            height: 350px;
+            border:solid 10px LightSteelBlue;
+            overflow: hidden;
+            margin-top: 40px;
+            }
+            
+        .login-pago fieldset{
+            border: none;
+            }
+            
+        .login-pago h1{
+            text-align: center;
+            }        
+            
+        .login-pago  ol li{
+            line-height: 25px;
+            list-style: none;
+          padding-top: 20px;
+            }
+            
+        .login-pago  [required]{
+            border:solid 1px red;
+            }
+            
+        .login-pago input:required {
+            outline: 1px solid red;
+            }
+        
+        .login-pago select{
+                font-size:12px;
+                background: yellow;
+                border:solid 1px Green;
+                border-radius: 5px;
+                float: right;
+                margin-right: 20px;        
+                width: 250px;
+                height: 30px;
+              }
+
+        .login-pago select option{
+                background:white;
+                color:red;
+              }
+
+        .login-pago select option:disabled{
+                background: blue;
+              }
+        
+        .login-pago input{
+                font-size:12px;
+                background: yellow;
+                border:solid 1px Green;
+                border-radius: 5px;
+                float: right;
+                margin-right: 20px;  
+                height: 30px; 
+                width: 250px;
+                }
+        
+        .login-pago button{
+                font-size:14px;
+                background: yellow;
+                color: black ;
+                font-weight: 700;
+                border:solid 1px Green;
+                width: 350px;
+                height: 30px;
+                text-align: center;
+               padding-top: 5px;
+                margin-top: 15px;
+                margin-right:20px;   
+              
+                }        

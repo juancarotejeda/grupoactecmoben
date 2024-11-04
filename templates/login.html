@@ -8,37 +8,41 @@
  <link rel="stylesheet" href='/static/css/estilo.css'>
 </head>  
 <body>
-  <div class="center">   
-  <div class="formulario">
-  <h1>GRUPO ACTEC MOTOBEN</h1> 
+  <fieldset class="login-pago">
+  <form  method='POST' action="/new_data">    
+  <legend><h1>GRUPO ACTEC MOTOBEN</h1></legend> 
+  <ol>
+  <li>  
   {% with messages = get_flashed_messages()%}
   {% if messages%}
-    {% for message in messages%}
-    <div class="msg">{{message}}</div>
-    {%endfor%}
-    {%endif%}
-    {%endwith%} 
-  <form  method='POST' action="/new_data">   
-         <div class="input-contenedor">  
-            <select name="parada" >
-            {%for parada in n_paradas%}
-            <option value = {{parada}} >{{parada}}</option>
-            {%endfor%}
-            </select>
-         </div>
-         <div class="input-contenedor">
-         <input type="text" name="cedula" placeholder="Cedula">       
-         </div>
-
-         <div class="input-contenedor">
-             <input type="password" name="clave" placeholder="Contraseña">    
-        </div>
-         <input type="submit" value="ENTRAR" class="button">
-        </form>
-        <div class="input-contenedor">
-
-    </div> 
-  </div>
-</div>    
+  {% for message in messages%}
+     <div class="msg">{{message}}</div>
+  {%endfor%}
+  {%endif%}
+  {%endwith%} 
+  </li>
+  <li> 
+  <label for="parada">Parada</label>          
+  <select name="parada" id="parada" required>
+        <optgroup label="Paradas"> 
+        <option selected ></option>   
+        {%for parada in n_paradas%}
+        <option >{{parada}}</option>
+        {%endfor%}
+        </optgroup>
+  </select>      
+  </li> 
+  <li>     
+    <label for="cedula">Cedula</label>
+    <input type="text" name="cedula" id="cedula" placeholder="Cedula" required>       
+  </li>
+  <li> 
+    <label for="clave">Clave</label>
+    <input type="password" id="clave" name="clave" placeholder="Contraseña" required>    
+  </li>
+  <button type="submit"  class="button">ENTRAR</button>
+  </ol>
+  </form>
+  </fieldset> 
 </body>
 </html>
