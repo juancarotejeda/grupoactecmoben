@@ -574,7 +574,7 @@ color: black;
    
 
 /*-----------------------------------login prinsipal------------------------*/        
-        .login-pago{
+        .login-entrada{
             margin:auto;
             background-color: #000000;
             color: white;
@@ -587,29 +587,29 @@ color: black;
             margin-top: 40px;
             }
             
-        .login-pago fieldset{
+        .login-entrada fieldset{
             border: none;
             }
             
-        .login-pago h1{
+        .login-entrada h1{
             text-align: center;
             }        
             
-        .login-pago  ol li{
+        .login-entrada  ol li{
             line-height: 25px;
             list-style: none;
           padding-top: 20px;
             }
             
-        .login-pago  [required]{
+        .login-entrada  [required]{
             border:solid 1px red;
             }
             
-        .login-pago input:required {
+        .login-entrada input:required {
             outline: 1px solid red;
             }
         
-        .login-pago select{
+        .login-entrada select{
                 font-size:12px;
                 background: yellow;
                 border:solid 1px Green;
@@ -620,16 +620,16 @@ color: black;
                 height: 30px;
               }
 
-        .login-pago select option{
+        .login-entrada select option{
                 background:white;
                 color:red;
               }
 
-        .login-pago select option:disabled{
+        .login-entrada select option:disabled{
                 background: blue;
               }
         
-        .login-pago input{
+        .login-entrada input{
                 font-size:12px;
                 background: yellow;
                 border:solid 1px Green;
@@ -640,7 +640,7 @@ color: black;
                 width: 250px;
                 }
         
-        .login-pago button{
+        .login-entrada button{
                 font-size:14px;
                 background: yellow;
                 color: black ;

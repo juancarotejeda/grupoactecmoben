@@ -141,15 +141,15 @@ def logout():
 def data_cuotas():
     my_list=[]
     if request.method == 'POST': 
-        #parada=request.form['parada']      
+        parada=request.form['parada']     
         hoy = request.form['time']
         cant=request.form['numero']
         valor_cuota=request.form['valor']
         for i in range(int(cant)): 
-            my_list +=(request.form.getlist('item')[i],   
-            request.form.getlist('estado')[i],   
-            request.form.getlist('nombre')[i], 
-            request.form.getlist('documento')[i])     
+            my_list +=(request.form.getlist('item')[i],
+                    request.form.getlist('select')[i],
+                    request.form.getlist('nombre')[i],
+                    request.form.getlist('cedula')[i])  
         string=funciones.dividir_lista(my_list,4) 
         cur = connection.cursor()
         funciones.crear_p(cur,parada,string,valor_cuota,hoy)  

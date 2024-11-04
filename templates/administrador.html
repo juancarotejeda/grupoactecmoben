@@ -3,9 +3,11 @@
 {% block content %}
 {{ super() }}
 <section id="cuotas" >
+<fieldset class="tables">
+<form action="/data_cuotas" method="POST">   
+<legend><h1>LISTA DE PAGOS</h1></legend> 
 <fieldset class="encabezado">       
    <ol>
-   <legend><h1>HOJA DE PAGOS</h1></legend>
    <li>
    <label for="paradas">PARADA:</label>             
    <input type="text" name="parada" value="{{parada}}" id="paradas">
@@ -15,7 +17,7 @@
    <input type="text" name="time" value="{{fecha}}" id="fecha">
    </li>
    <li>
-   <label for="miembro">NUMERO DE MIEMBROS:</label>
+   <label for="miembro">MIEMBROS:</label>
    <input type="text" name="numero" value="{{ cabecera[2]}}" id="miembro">         
    </li>
    <li>
@@ -24,9 +26,6 @@
    </li>
    </ol>
    </fieldset>
-   <fieldset class="tables">
-   <form action="/data_cuotas" method="POST">   
-   <legend><h1>LISTA DE PAGOS</h1></legend>  
    <table>
    <tr>
       <th>ITEM</th>
@@ -38,20 +37,24 @@
    <tr>
       <td>
        {{ user[0]}}
+       <input type="hidden" value="{{ user[0]}}" name="item">
       </td>
       <td>
-      <select name="estado" id="estado">
+      <select name="select" id="estado">
             <optgroup label="Estado">  
             <option selected >no_pago</option>
             <option >pago</option>
             </optgroup>
       </select>
+      <input type="hidden" value="select" name="estado">
       </td>
       <td>
       {{ user[1]}}
+      <input type="hidden" value="{{ user[1]}}" name="nombre">
       </td>
       <td>
       {{ user[2]}}
+      <input type="hidden" value="{{ user[2]}}" name="cedula">
       </td>
    </tr>
    {%endfor%}
