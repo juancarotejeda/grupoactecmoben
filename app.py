@@ -78,7 +78,6 @@ def administrador():
 
 @app.route('/digitadores') 
 def digitadores():
-
     return render_template('login_dir.html')
 
 @app.route('/contacto') 

@@ -2,9 +2,9 @@
 {% block content %}
 {{ super() }}
 <fieldset class="login">           
-	<form action="{{url_for('login_a')}}" method="post">
-	<ol>
-	<legend><h1>Administrador</h1></legend> 	
+	<form action="/login_a" method="post">
+	<legend><h1>Administrador</h1></legend> 
+	<ol>	
 	<li>	
 	<div class="msg">{{msg}}</div>
 	</li>
@@ -20,8 +20,8 @@
 	<label for="password">Contraseña</label>
 	<input id="password" name="password" type="password" placeholder="Entre su Password"/>
 	</li>
+    </ol>	
 	<button type="submit" class="btn" >Ingresar</button>
-	</ol>	
 	</form>
 </fieldset>
 {% endblock %}

@@ -2,13 +2,11 @@
 {% extends "layout.html" %}
 {% block content %}
   {{ super() }}
-<section id="n_parada">    
+<section id="n_parada"> 
+    <fieldset class="pago">  
     <form action="/crear_nueva_p" method="POST" > 
-            <fieldset class="pago">
+    <LEgend><h1>CREAR PARADA</h1></LEgend>         
             <ol> 
-            <li>
-            <LEgend><h1>CREAR PARADA</h1></LEgend> 
-            </li>
             <li>
             <legend>Datos de la parada</legend>
             </li> 
@@ -69,27 +67,27 @@
             <label for="cuenta">Num. de cuenta</label>
             <input id="cuenta" name="cuenta" type="number" placeholder="Ej. 00166889999" required>
             </li>
-            <button type="submit"><h1>CREAR</h1></button>
-             </ol>
-            </fieldset> 
-        </form>           
+        </ol>
+        <button type="submit"><h1>CREAR</h1></button>
+        </form>     
+        </fieldset>            
         </section>
 
         <section id="n_asociado"> 
         <fieldset class="pago">
-        <form action="/n_miembro" method="POST" >   
-        <ol>
-        <legend><h1>AGREGAR  ASOCIADO</h1></legend>     
+        <form action="/n_miembro" method="POST" > 
+        <legend><h1>AGREGAR  ASOCIADO</h1></legend>       
+        <ol>    
         <li>
-            <label for="E-parada">Elegir parada</label>
-            <select id="E-parada" name="E-parada" required> 
-                   <optgroup label="parada">
-                   <option selected></option>
-                   {%for parada in paradas%}
-                   <option value = {{parada}} >{{parada}}</option>
-                   {%endfor%}
-                   </optgroup>
-             </select><br>
+        <label for="E-parada">Elegir parada</label>
+        <select id="E-parada" name="E-parada" required> 
+                <optgroup label="parada">
+                <option selected></option>
+                {%for parada in paradas%}
+                <option value = {{parada}} >{{parada}}</option>
+                {%endfor%}
+                </optgroup>
+        </select><br>
         </li> 
         <li>
         <label for="nombre">Nombre completo</label>
@@ -107,8 +105,8 @@
         <label for="funcion">Funcion</label>
         <input id="funcion" name="funcion" type="text" required>
         </li>
-        <button type="submit">Agregar asociado</button>
         </ol>
+        <button type="submit">Agregar asociado</button>
         </form>
         </fieldset> 
         </section>
@@ -130,16 +128,15 @@
             </select><br>
             <button type="submit">Aceptar</button><br>
             </form> 
-            <br><br>    
             </li> 
             </ol>
+            <br><br>    
+
             -------------------------------------------------------------------------------
             <form action="actualizar_p" method="POST">
             {%for dat in data%}
-            <ol>   
-            <li>
             <legend>Datos de la parada</legend>
-            </li>
+            <ol>   
             <li>
             <label for="parada">Parada</label>
             <input id="parada" name="parada" type="text" value="{{parada}}">
@@ -166,8 +163,8 @@
             </li> 
             <li>
             <label for="pago">Pago</label>
-                    <input id="pago" name="pago" type="text"value="{{dat[7]}}">
-                    </li>                      
+            <input id="pago" name="pago" type="text"value="{{dat[7]}}">
+            </li>                      
             <li>
             <label for="banco">Banco</label>
             <input id="banco" name="banco" type="text"value="{{dat[8]}}">
@@ -176,13 +173,13 @@
             <label for="cuenta">Num. de cuenta</label>
             <input id="cuenta" name="num_cuenta" type="number" value="{{dat[9]}}">
             </li>
-            <button type="submit">ACTUALIZAR</button>
-             </ol>
+            </ol>
+            <button type="submit">ACTUALIZAR</button>          
              {%endfor%}
             </form>
             </fieldset>
-</section>
-<section id="editar_as">
+         </section>
+         <section id="editar_as">
         <fieldset class="pago">
         <form action="/select_p" method="POST">
         <legend><h1>EDITAR ASOCIADO</h1></legend>     
@@ -223,7 +220,7 @@
         -------------------------------------------------------------------------------
         <br><br>       
         <form action="edit_miembros">
-            <legend><h1>EDITAR ASOCIADO</h1></legend>     
+        <legend><h1>EDITAR ASOCIADO</h1></legend>     
         <ol>   
         <li>
         <label for="nombre">Nombre completo</label>
@@ -241,9 +238,9 @@
         <label for="funcion">Funcion</label>
         <input id="funcion" name="funcion" type="text" required>
         </li>
-        <button type="submit">EDITAR</button>
         </ol>
+        <button type="submit">EDITAR</button> 
+        </form>      
         </fieldset> 
-        </form>
 </section>
 {% endblock %}

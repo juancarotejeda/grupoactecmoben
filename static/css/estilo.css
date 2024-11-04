@@ -153,12 +153,6 @@ align-items: center;
 }
 
 
-/*input{
-    border: 0; 
-    background: transparent; 
-   }*/
-
-
    .btn button{
     margin-top: 5px;    
     width: 20vw; 
@@ -364,8 +358,16 @@ color: black;
         .encabezado ul li{
             line-height: 25px;
             list-style: none;
+            list-style-type: none;
             padding: 4px;
             }
+
+        .encabezado ol li{
+                line-height: 25px;
+                list-style-type: none;
+                padding: 4px;
+                }
+
 
 /*-----------------------------------login-------------------------------*/
         .login{
@@ -453,30 +455,14 @@ color: black;
             padding-top: 30px;
          }         
 
-      /*   @media(min-width:768px)
-         {
-          .formulario{
-             margin: auto;
-             width: 500px;
-             margin-top: 40px;
-             border-radius: 2%;
-             }
-         }*/
-
 
          .contenedor{
             width: 100%;
             padding: 15px;
         }
 
-        /*.formulario{
-            background: #8eecff; 
-            margin-top: 15px;
-            padding: 3px;
-        }*/
 
         .formulario{
-
             margin-top: 30px;
             border-radius: 2%;
             min-height: 400px;
@@ -497,15 +483,6 @@ color: black;
         
         }
         
-        
-       /* .input-contenedor input[type="text"],
-        input[type="password"]{
-            font-size: 20px;
-            width: 82%;
-            padding: 10px;
-            border: none;
-            background: #fdfafa;
-        }*/
         
         
         .input-contenedor{

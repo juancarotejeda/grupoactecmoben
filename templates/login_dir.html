@@ -1,10 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
 {{ super() }}
-<fieldset class="login">           
-	<form action="{{url_for('login_dir')}}" method="post">
+
+<fieldset class="login">
+<form action="/login_dir" method="POST">	
+<legend><h1>Digitador(a)</h1></legend> 		           
 	<ol>
-	<legend><h1>Digitador(a)</h1></legend> 	
 	<li>	
 	<div class="msg">{{msg}}</div>
 	</li>
@@ -20,8 +21,8 @@
 	<label for="password">Contraseña</label>
 	<input id="password" name="password" type="password" placeholder="Entre su Password"/>
 	</li>
-		<button type="submit" class="btn" >Ingresar</button>
-	</ol>	
+    </ol>
+	<button type="submit" class="btn" >Ingresar</button>	
 	</form>
 </fieldset>
 {% endblock %}
