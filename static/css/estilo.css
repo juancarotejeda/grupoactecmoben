@@ -152,23 +152,6 @@ align-items: center;
     color: gold;
 }
 
-table{
-  margin: 0px 0px;  
-  width:auto;
-display: flex;
-}
-
-
-th, td {
-    width:max-content;
-    border:1px solid  black;
-    color: #000000;
-  }
-
-/*select{
-    border: 0; 
-    background: transparent;    
-}*/
 
 /*input{
     border: 0; 
@@ -359,7 +342,7 @@ color: black;
         }
 
 
-
+/*----------------------------------encabezado--------------------------*/
     
     .encabezado{
         margin:auto;
@@ -373,8 +356,9 @@ color: black;
     }        
     .encabezado input{
         font-size:14px;
-        color: white;
+        color: rgb(0, 0, 0);
         width:200px;
+        background-color: gold;
         }
         
         .encabezado ul li{
@@ -383,7 +367,7 @@ color: black;
             padding: 4px;
             }
 
-
+/*-----------------------------------login-------------------------------*/
         .login{
             margin:auto;
             background-color: #000000;
@@ -469,7 +453,7 @@ color: black;
             padding-top: 30px;
          }         
 
-         @media(min-width:768px)
+      /*   @media(min-width:768px)
          {
           .formulario{
              margin: auto;
@@ -477,7 +461,7 @@ color: black;
              margin-top: 40px;
              border-radius: 2%;
              }
-         }
+         }*/
 
 
          .contenedor{
@@ -514,14 +498,14 @@ color: black;
         }
         
         
-        .input-contenedor input[type="text"],
+       /* .input-contenedor input[type="text"],
         input[type="password"]{
             font-size: 20px;
             width: 82%;
             padding: 10px;
             border: none;
             background: #fdfafa;
-        }
+        }*/
         
         
         .input-contenedor{
@@ -670,3 +654,90 @@ color: black;
                 margin-right:20px;   
               
                 }        
+
+/*---------------------------tables-------------------------------------*/
+
+.tables{
+    margin:auto;
+    background-color: #000000;
+    color: white;
+    font-size: 12px;
+    padding: 30px;
+    width: 400px;
+    border:solid 10px LightSteelBlue;
+    overflow: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    }
+    
+.tables fieldset{
+    border: none;
+    }
+    
+.tables h1{
+    text-align: center;
+    margin-bottom: 10px;
+    }   
+    
+.tables table{
+        margin: auto;  
+         width:350px;
+       
+       }
+       
+       
+.tables th, td {
+           width:min-content;
+           border: 0;
+           color: white;
+         }
+           
+.tables  ol li{
+    line-height: 25px;
+    list-style: none;
+  padding-top: 20px;
+    }
+    
+.tables  [required]{
+    border:solid 1px red;
+    }
+    
+.tables input:required {
+    outline: 1px solid red;
+    }
+
+.tables select{
+        font-size:12px;
+        background: yellow;
+        border:solid 1px Green;
+        border-radius: 5px;
+        float: right;
+        margin-right: 10px;        
+        width: 80px;
+        height: 20px;
+      }
+
+.tables select option{
+        background:black;
+        color:red;
+      }
+
+.tables select option:disabled{
+        background: blue;
+      }
+
+
+.tables button{
+        font-size:14px;
+        background: yellow;
+        color: black ;
+        font-weight: 700;
+        border:solid 1px Green;
+        width: 350px;
+        height: 20px;
+        text-align: center;
+       padding-top: 5px;
+        margin-top: 15px;
+        margin-right:10px;   
+      
+        }        

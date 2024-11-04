@@ -49,10 +49,8 @@
 </fieldset> 
 </section> 
 <section id="listado">
- <div class="info"> 
-<h1>LISTADO DE MIEMBROS</h1> 
-{%for datos in informacion %}
-{%endfor%}
+<fieldset class="tables"> 
+<h1>LISTADO DE MIEMBROS</h1>
 <table>
    <tr>
       <th>Item</th>
@@ -71,10 +69,10 @@
    </tr>
    {%endfor%}
 </table>   
-</div>
+</fieldset>
 </section>
 <section>
-   <div class="info"> 
+<fieldset class="tables">
   <h1>INFORMACION FINANCIERA</h1>
   <table>
      <tr>
@@ -133,18 +131,18 @@
         <td>RD$</td>
      </tr>
   </table>
-  </div>
+</fieldset>
   </section>
   <section id="aporte">
-    <div class="info">
+   <fieldset class="tables">
       <h1>Historial de Aportes y Pendientes</h1>
       <table>
          <tr>
             <th>Nombre de asociado</th>
             <th>Total cuotas</th>
             <th>Cuotas pagadas</th>
-            <th>Cuotas Pendientes %</th>
-            <th>Porcentaje de pagos</th>
+            <th>Cuotas Pendientes</th>
+            <th>Porcentaje de pagos(%)</th>
          </tr>
          {% for usuario in cuotas_hist %}
          <tr>
@@ -152,10 +150,10 @@
             <td>{{usuario[3]}}</td>
             <td>{{usuario[1]}}</td>
             <td>{{usuario[2]}}</td>
-            <td>{{usuario[4]}}</td>
+            <td>{{usuario[4]}}%</td>
          </tr>
          {%endfor%}
       </table>     
-    </div>
+   </fieldset>
   </section>
 {% endblock %}

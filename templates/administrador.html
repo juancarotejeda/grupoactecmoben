@@ -3,10 +3,9 @@
 {% block content %}
 {{ super() }}
 <section id="cuotas" >
-<form action="/data_cuotas" method="POST">     
-<fieldset class="info">
+<fieldset class="encabezado">       
    <ol>
-   <legend><h1>LISTA DE PAGOS</h1></legend>
+   <legend><h1>HOJA DE PAGOS</h1></legend>
    <li>
    <label for="paradas">PARADA:</label>             
    <input type="text" name="parada" value="{{parada}}" id="paradas">
@@ -23,10 +22,13 @@
    <label for="valor">CUOTA:</label>
    <input type="text" name="valor" value="{{ cabecera[0]}}" id="valor">
    </li>
-   <li> 
- <legend>Tabla de pagos</legend>  
-<table>
-   <tr></tr>
+   </ol>
+   </fieldset>
+   <fieldset class="tables">
+   <form action="/data_cuotas" method="POST">   
+   <legend><h1>LISTA DE PAGOS</h1></legend>  
+   <table>
+   <tr>
       <th>ITEM</th>
       <th>PAGO</th>
       <th>NOMBRE_DEL_ASOCIADO</th>
@@ -35,28 +37,28 @@
    {% for user in datos %}
    <tr>
       <td>
-         <input  type="text" class="campo_item" name="item" value="{{ user[0]}}">
+       {{ user[0]}}
       </td>
       <td>
-      <select name="estado" id="pagar">
-      <option value="no_pago">no_pago</option>
-      <option value="pago">pago</option>
+      <select name="estado" id="estado">
+            <optgroup label="Estado">  
+            <option selected >no_pago</option>
+            <option >pago</option>
+            </optgroup>
       </select>
       </td>
       <td>
-      <input type="text" class="campo_nombre" name="nombre" value="{{ user[1]}}">
+      {{ user[1]}}
       </td>
       <td>
-      <input type="text" class="campo_id" name="documento" value="{{ user[2]}}" id="">
+      {{ user[2]}}
       </td>
    </tr>
    {%endfor%}
 </table>
 <button type="submit">ENVIAR</button>
-</li>
-</ol>
-</fieldset>
 </form>
+</fieldset>
 </section>
 
 <section id="bancos">
