@@ -66,10 +66,11 @@
 </section>
 
 <section id="bancos">
+   <fieldset class="pago">
    <form action="data_bancos" method="post"> 
    {%for datos in informacion %}   
    <input type="hidden" name="parada" value="{{datos[2]}}" id="parada">   
-   <fieldset class="pago">
+   
    <legend><h1>REPORTE BANCARIO</h1></legend>      
    <ol>    
    <li>   

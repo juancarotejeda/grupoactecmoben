@@ -12,61 +12,13 @@ body {
     max-height: 900px;
     margin: 0 auto;
     font-family: Arial, Helvetica, sans-serif;
-    background: url(/static/images/banner.png);
+    background: url(/static/images/imagen.jpg);
     background-size:100%;
     background-attachment:fixed;
 
 }
 
 
-.info{
-    max-height: max-content;
-    margin: 20px 0px;
-    text-align: center;
-    padding-left: 0px;
-    padding-bottom:10px ;
-}
-
-.head-info{
-    display: block;
-    max-height: max-content;
-    margin: 20px 0px;
-    text-align: center;
-    justify-content: center;
-    padding-left: 0px;
-    padding-bottom:10px ;
-    
-}
-.head-tipo{
-    border: 2px solid #000000 ;
-}
-
-.head-contenido{
-    display: flex; 
-}
-
-.head-contenido1{
-    list-style: none; 
-    margin-right: auto; 
-}
-
-.head-contenido1 label{
-    font-weight: 700;
-}
-
-.head-contenido2 label{
-    font-weight: 700;
-}
-
-.head-contenido ul{
-    list-style: none;
-}
-
-
-.head-contenido2{
-    justify-content: end;
-    padding-right: 20px;   
-}
 
 
 .headers{
@@ -135,122 +87,7 @@ align-items: center;
         }
       }
 
-.headers .btn button{
-    font-weight: 700;
-    color: #ff1b02;
-    padding: 9px 25px;
-    background-color: #000000;
-    border: none;
-    border-radius: 50px;
-    transform: all 0.3s ease 0s;
-    cursor: pointer;
-}
 
-.headers .btn button:hover{
-    transform: scale(1.1);
-    background-color: #000000;
-    color: gold;
-}
-
-
-   .btn button{
-    margin-top: 5px;    
-    width: 20vw; 
-    font-size: medium;
-    height: max-content;
-    background: #0217ff;   
-    }
-    
-    .btn button:hover{
-        background: #ff1b02;
-        color: #fff;
-    } 
-
-
-
-.input-contenedor h1{
-    text-align: center;
-    color: #1a2537;
-    font-size: 40px;
-}
-.input-contenedor select{
-    font-size: 20px;
-    width: 82%;
-    padding: 10px;
-    border: none;
-
-}
-
-
-
-
-
-
-.input-contenedor{
-
-    margin-bottom: 15px;
-    overflow: hidden;
-}
-
-
-.input-contenedor select{
-    margin-left: 52px;
-    margin-bottom: 15px;
-    overflow: hidden;
-}
-
-
-
-.input-contenedor .icon{
-    min-width: 50px;
-    text-align: center;
-}
-
-
-.input-contenedor .icon select{
-    min-width: 20px;
-    text-align: center;
-}
-
-.adm{
-   color: #ff1b02; 
-   padding: 5px;
-   border: 1px black;
-}
-
-.head-info-adm{
-    display: block;
-    max-height: max-content;
-    margin: 20px 0px;
-    text-align: center;
-    justify-content: center;
-    padding-left: 0px;
-    padding-bottom:10px ;   
-
-}
-
-.head-info-adm-up{
-    display: block;
-    max-height: max-content;
-    margin: 5px 0px;
-    text-align: center;
-    justify-content: center;
-    padding-left: 0px;
-    padding-bottom:5px ;   
-
-}
-
-.head-info-adm-down{
-    display: inline-block;
-    max-width: min-content;
-    max-height: max-content;
-    margin: 5px 0px;
-    text-align: center;
-    justify-content: center;
-    padding-left: 0px;
-    padding-bottom:5px ;   
-
-}
 
 .pago{
     margin:auto;
@@ -273,6 +110,7 @@ align-items: center;
     .pago  ol li{
     line-height: 25px;
     list-style: none;
+    list-style-type: none;
     }
     
     .pago  [required]{
@@ -456,92 +294,10 @@ color: black;
          }         
 
 
-         .contenedor{
-            width: 100%;
-            padding: 15px;
-        }
 
 
-        .formulario{
-            margin-top: 30px;
-            border-radius: 2%;
-            min-height: 400px;
-            background: #8eecff; 
-        } 
 
 
-         .input-contenedor h1{
-            text-align: center;
-            color: #1a2537;
-            font-size: 40px;
-        }
-        .input-contenedor select{
-            font-size: 20px;
-            width: 82%;
-            padding: 10px;
-            border: none;
-        
-        }
-        
-        
-        
-        .input-contenedor{
-        
-            margin-bottom: 15px;
-            overflow: hidden;
-        }
-        
-        
-        .input-contenedor select{
-            margin-left: 52px;
-            margin-bottom: 15px;
-            overflow: hidden;
-        }
-        
-        
-        
-        .input-contenedor .icon{
-            min-width: 50px;
-            text-align: center;
-        }
-        
-        
-        .input-contenedor .icon select{
-            min-width: 20px;
-            text-align: center;
-        }
-         .button{
-            margin-left: 17px;
-            border: none;
-            width: 90%;
-            color: white;
-            font-size: 20px;
-            background:  #1a2537;
-            padding: 15px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-          .button:hover{
-            background: cadetblue;
-        }
-        p{
-            text-align: center;
-        }
-        .link{
-            text-decoration: none;
-              color: #1a2537;
-            font-weight: 600;
-        }
-        .link:hover{
-             color: cadetblue;
-        }
-        
-        
-        .center{
-            align-items: center;
-            color: coral;
-            text-align: center;
-        }
         
         .msg{
         color: rgb(255, 87, 20);
@@ -575,6 +331,7 @@ color: black;
         .login-entrada  ol li{
             line-height: 25px;
             list-style: none;
+            list-style-type: none;
           padding-top: 20px;
             }
             
@@ -672,6 +429,7 @@ color: black;
 .tables  ol li{
     line-height: 25px;
     list-style: none;
+    list-style-type: none;
   padding-top: 20px;
     }
     
