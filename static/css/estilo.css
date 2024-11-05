@@ -12,7 +12,7 @@ body {
     max-height: 900px;
     margin: 0 auto;
     font-family: Arial, Helvetica, sans-serif;
-    background: url(/static/images/imagen.jpg);
+    background: url(/static/images/banner.png);
     background-size:100%;
     background-attachment:fixed;
 
@@ -105,7 +105,10 @@ align-items: center;
     border: none;
     }
     
-
+    .pago h1{
+        text-align: center;
+        margin-bottom: 10px;            
+        } 
     
     .pago  ol li{
     line-height: 25px;
@@ -193,12 +196,7 @@ color: black;
         background-color: gold;
         }
         
-        .encabezado ul li{
-            line-height: 25px;
-            list-style: none;
-            list-style-type: none;
-            padding: 4px;
-            }
+
 
         .encabezado ol li{
                 line-height: 25px;
@@ -206,6 +204,10 @@ color: black;
                 padding: 4px;
                 }
 
+    .encabezado h1{
+        text-align: center;
+        margin-bottom: 10px;            
+        } 
 
 /*-----------------------------------login-------------------------------*/
         .login{
@@ -226,6 +228,11 @@ color: black;
                 padding: 4px;
                 }
 
+            .login h1{
+                    text-align: center;
+                    margin-bottom: 10px;            
+                    }                 
+            
 
             .login input{
             font-size:12px;
@@ -291,14 +298,8 @@ color: black;
             text-align: center;
             border-radius: 10px;
             padding-top: 30px;
-         }         
+         }     
 
-
-
-
-
-
-        
         .msg{
         color: rgb(255, 87, 20);
         font-size: 20px;
@@ -326,6 +327,7 @@ color: black;
             
         .login-entrada h1{
             text-align: center;
+            margin-bottom: 10px;            
             }        
             
         .login-entrada  ol li{
@@ -416,6 +418,7 @@ color: black;
 .tables table{
         margin: auto;  
          width:350px;
+         text-align: center;
        
        }
        

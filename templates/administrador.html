@@ -107,7 +107,7 @@
    <section id="gastos">
    <fieldset class="pago">  
    <form action="/data_gastos" method="post">
-   <legend><h3>REPORTE GASTOS </h3></legend>   
+   <legend><h1>REPORTE GASTOS </h1></legend>   
    {%for datos in informacion %}   
      <input type="hidden" name="parada" value="{{datos[2]}}" id="parada">  
    {%endfor%}  
@@ -144,9 +144,9 @@
    </section>
 
    <section id="ingresos" >
-   <fieldset class="pago"> 
-   <legend><h3>REPORTE DE INGRESOS</h3></legend>         
+   <fieldset class="pago">        
    <form action="data_ingresos" method="post">
+   <legend><h1>REPORTE DE INGRESOS</h1></legend>    
    {%for datos in informacion %}   
       <input type="hidden" name="parada" value="{{datos[2]}}" id="parada">  
    {%endfor%}   
@@ -181,9 +181,9 @@
    </form>   
    </section>
    <section id="prestamos" >
-   <fieldset class="pago">
-   <legend><h3>REPORTE PRESTAMOS</h3></legend>  
+   <fieldset class="pago"> 
    <form action="data_prestamos" method="post">  
+   <legend><h1>REPORTE PRESTAMOS</h1></legend>    
    {%for datos in informacion %}   
    <input type="hidden" name="parada" value="{{datos[2]}}" id="parada">  
    {%endfor%}      
@@ -217,9 +217,9 @@
    </section>
 
    <section id="prestamos" class="prestamos">
-   <fieldset class="pago"> 
-   <legend><h3>REPORTE DE ABONO A PRESTAMOS</h3></legend>        
+   <fieldset class="pago">        
    <form action="data_abonos" method="post">
+   <legend><h1>REPORTE DE ABONO A PRESTAMOS</h1></legend>    
    {%for datos in informacion %}   
        <input type="hidden" name="parada" value="{{datos[2]}}" id="parada">  
    {%endfor%}  
